@@ -56,9 +56,12 @@ class CategoryController extends Controller
             'name' => $request->name,
         ]);
 
-        $this->updateImage(
-            $request, $path = 'public/categories/', $name = 'image', $data = $category, $url = $image->hashName()
-        );
+        if($request->file('image')){
+            $this->updateImage(
+                $path = 'public/categories/', $name = 'image', $data = $category, $url = $image->hashName()
+            );
+        }
+
 
         return back()->with('toast_success', 'Kategori Berhasil Diubah');
     }
@@ -75,6 +78,6 @@ class CategoryController extends Controller
 
         Storage::disk('local')->delete('public/categories/'. basename($category->image));
 
-        return back();
+        return back()->with('toast_success', 'Kategori Berhasil Dihapus');
     }
 }
