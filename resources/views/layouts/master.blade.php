@@ -74,11 +74,11 @@
             })
 
             swalWithBootstrapButtons.fire({
-                title: 'Are you sure want to delete this?',
+                title: 'Apakah kamu yakin ingin menghapus data ini?',
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonText: 'Yes, delete it!',
-                cancelButtonText: 'No, cancel!',
+                confirmButtonText: 'Ya, Tolong Hapus!',
+                cancelButtonText: 'Tidak!',
                 reverseButtons: true
             }).then((result) => {
                 if (result.value) {
@@ -90,7 +90,7 @@
                     result.dismiss === Swal.DismissReason.cancel
                 ) {
                     swalWithBootstrapButtons.fire(
-                        'Your data still save !',
+                        'Data kamu tetap aman !',
                         '',
                         'error'
                     )

@@ -18,17 +18,11 @@ trait HasImage
         return $image;
     }
 
-    public function updateImage($request, $path, $name, $data, $url)
+    public function updateImage($path, $name, $data, $url)
     {
-        $image = null;
-
-        if($request->file($name)){
-            Storage::disk('local')->delete($path. basename($data->image));
-            $data->update([
-                $name => $url,
-            ]);
-        }
-
-        return $image;
+        Storage::disk('local')->delete($path. basename($data->image));
+        $data->update([
+            $name => $url,
+        ]);
     }
 }
