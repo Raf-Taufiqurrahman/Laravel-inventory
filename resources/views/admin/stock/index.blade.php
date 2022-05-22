@@ -1,9 +1,8 @@
-@extends('layouts.master', ['title' => 'Produk'])
+@extends('layouts.master', ['title' => 'Stok'])
 
 @section('content')
     <x-container>
         <div class="col-12">
-            <x-button-link title="Tambah Produk" icon="plus" class="btn btn-primary mb-3" style="mr-1" :url="route('admin.product.create')" />
             <x-card title="DAFTAR PRODUK" class="card-body p-0">
                 <x-table>
                     <thead>
@@ -14,6 +13,7 @@
                             <th>Nama Supplier</th>
                             <th>Kategori Produk</th>
                             <th>Satuan</th>
+                            <th>Stok</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -29,13 +29,20 @@
                                 <td>{{ $product->name }}</td>
                                 <td>{{ $product->supplier->name }}</td>
                                 <td>{{ $product->category->name }}</td>
+                                <td>{{ $product->quantity }}</td>
                                 <td>
-                                    <x-button-modal :id="$product->id" icon="info" style="" title=""
-                                        class="btn btn-success" />
-                                    <x-modal :id="$product->id" title="Detail - {{ $product->name }}">
+                                    <x-button-modal :id="$product->id" icon="plus" style="mr-1" title="Tambahkan Stok Produk"
+                                        class="btn bg-teal text-white" />
+                                    <x-modal :id="$product->id" title="Tambah Stok Produk - {{ $product->name }}">
+                                        <form action="{{ route('admin.stock.update', $product->id) }}" method="POST"
+                                            enctype="multipart/form-data">
+                                            @csrf
+                                            @method('PUT')
+                                            <x-input title="Stok Produk" name="quantity" type="text"
+                                                placeholder="Stok Produk" :value="$product->quantity" />
+                                            <x-button-save title="Simpan" icon="save" class="btn btn-primary" />
+                                        </form>
                                     </x-modal>
-                                    <x-button-link title="" icon="edit" class="btn btn-info" :url="route('admin.product.edit', $product->id)" style="" />
-                                    <x-button-delete :id="$product->id" :url="route('admin.product.destroy', $product->id)" title="" class="btn btn-danger" />
                                 </td>
                             </tr>
                         @endforeach

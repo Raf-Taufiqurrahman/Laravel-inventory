@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Supplier;
+use App\Traits\HasImage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Traits\HasImage;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -62,17 +63,6 @@ class ProductController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -80,7 +70,11 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $suppliers = Supplier::get();
+
+        $categories = Category::get();
+
+        return view('admin.product.edit', compact('product', 'suppliers', 'categories'));
     }
 
     /**
@@ -92,7 +86,23 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $image = $this->uploadImage($request, $path = 'public/products/', $name = 'image');
+
+        $product->update([
+            'category_id' => $request->category_id,
+            'supplier_id' => $request->supplier_id,
+            'name' => $request->name,
+            'unit' => $request->unit,
+            'description' => $request->description,
+        ]);
+
+        if($request->file($name)){
+            $this->updateImage(
+                $path = 'public/cate gories/', $name = 'image', $data = $product, $url = $image->hashName()
+            );
+        }
+
+        return redirect(route('admin.product.index'))->with('toast_success', 'Produk Berhasil Diubah');
     }
 
     /**
@@ -103,6 +113,10 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        Storage::disk('local')->delete('public/products/'. basename($product->image));
+
+        return back()->with('toast_success', 'Kategori Berhasil Dihapus');
     }
 }
