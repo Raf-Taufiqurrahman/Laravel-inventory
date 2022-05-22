@@ -56,7 +56,7 @@
                         </span>
                     </a>
                 </li>
-                <div class="hr-text hr-text-left ml-2 mb-2 mt-2">Master Data</div>
+                <div class="hr-text hr-text-left ml-2 mb-2 mt-2">Menu</div>
                 <li class="nav-item">
                     <a class="nav-link {{ Route::is('admin.category*') ? 'active' : '' }}"
                         href="{{ route('admin.category.index') }}">
@@ -111,7 +111,50 @@
                         </span>
                     </a>
                 </li>
-                <div class="hr-text hr-text-left ml-2 mb-2 mt-2">Report</div>
+                <div class="hr-text hr-text-left ml-2 mb-2 mt-2">Stok Produk</div>
+                <li class="nav-item">
+                    <a class="nav-link {{ Route::is('admin.stock*') ? 'active' : '' }}"
+                        href="{{ route('admin.stock.index') }}">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block mr-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clipboard-list"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path
+                                    d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2">
+                                </path>
+                                <rect x="9" y="3" width="6" height="4" rx="2"></rect>
+                                <line x1="9" y1="12" x2="9.01" y2="12"></line>
+                                <line x1="13" y1="12" x2="15" y2="12"></line>
+                                <line x1="9" y1="16" x2="9.01" y2="16"></line>
+                                <line x1="13" y1="16" x2="15" y2="16"></line>
+                            </svg>
+                        </span>
+                        <span class="nav-link-title">
+                            Stok
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block mr-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-analytics"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                                <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
+                                <line x1="9" y1="17" x2="9" y2="12"></line>
+                                <line x1="12" y1="17" x2="12" y2="16"></line>
+                                <line x1="15" y1="17" x2="15" y2="14"></line>
+                            </svg>
+                        </span>
+                        <span class="nav-link-title">
+                            Laporan
+                        </span>
+                    </a>
+                </li>
+                <div class="hr-text hr-text-left ml-2 mb-2 mt-2">Transaksi</div>
             </ul>
         </div>
     </div>

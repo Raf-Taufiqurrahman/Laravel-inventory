@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\{
-    DashboardController, CategoryController, SupplierController, ProductController
+    DashboardController, CategoryController, SupplierController, ProductController, StockController
 };
 use Illuminate\Support\Facades\Route;
 
@@ -22,7 +22,8 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
-    Route::resource('/category', CategoryController::class);
-    Route::resource('/supplier', SupplierController::class);
-    Route::resource('/product', ProductController::class);
+    Route::resource('/category', CategoryController::class)->except('show', 'create', 'edit');
+    Route::resource('/supplier', SupplierController::class)->except('show', 'create', 'edit');
+    Route::resource('/product', ProductController::class)->except('show', 'create', 'edit');
+    Route::resource('/stock', StockController::class)->only('index', 'update');
 });

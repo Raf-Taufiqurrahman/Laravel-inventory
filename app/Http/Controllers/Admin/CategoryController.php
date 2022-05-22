@@ -56,12 +56,11 @@ class CategoryController extends Controller
             'name' => $request->name,
         ]);
 
-        if($request->file('image')){
+        if($request->file($name)){
             $this->updateImage(
                 $path = 'public/categories/', $name = 'image', $data = $category, $url = $image->hashName()
             );
         }
-
 
         return back()->with('toast_success', 'Kategori Berhasil Diubah');
     }
