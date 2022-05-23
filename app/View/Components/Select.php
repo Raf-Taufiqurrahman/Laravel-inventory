@@ -16,7 +16,7 @@ class Select extends Component
     public function __construct($name, $title)
     {
         $this->name = $name;
-        $this->title  = $title;
+        $this->title = $title;
     }
 
     /**

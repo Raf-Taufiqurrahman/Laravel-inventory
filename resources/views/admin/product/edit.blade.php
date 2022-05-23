@@ -8,7 +8,7 @@
                     <form action="{{ route('admin.product.update', $product->id) }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
-                        @method('PUTwe')
+                        @method('PUT')
                         <x-input name="name" type="text" title="Nama Produk" placeholder="Nama Produk" :value="$product->name" />
                         <div class="row">
                             <div class="col-6">
