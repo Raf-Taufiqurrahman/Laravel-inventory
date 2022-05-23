@@ -11,13 +11,13 @@
                         <x-input name="unit" type="text" title="Satuan Produk" placeholder="Satuan Produk"
                             :value="old('unit')" />
                         <x-select title="Supplier Produk" name="supplier_id">
-                            <option value="">Silahkan Pilih</option>
+                            <option value>Silahkan Pilih</option>
                             @foreach ($suppliers as $supplier)
                                 <option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
                             @endforeach
                         </x-select>
                         <x-select title="Kategori Produk" name="category_id">
-                            <option value="">Silahkan Pilih</option>
+                            <option value>Silahkan Pilih</option>
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach

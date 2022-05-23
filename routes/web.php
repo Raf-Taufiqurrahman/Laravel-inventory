@@ -24,6 +24,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
     Route::resource('/category', CategoryController::class)->except('show', 'create', 'edit');
     Route::resource('/supplier', SupplierController::class)->except('show', 'create', 'edit');
-    Route::resource('/product', ProductController::class)->except('show', 'create', 'edit');
+    Route::resource('/product', ProductController::class)->except('show');
     Route::resource('/stock', StockController::class)->only('index', 'update');
 });

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SupplierRequest;
 
 class SupplierController extends Controller
 {
@@ -26,7 +27,7 @@ class SupplierController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SupplierRequest $request)
     {
         Supplier::create($request->all());
 
@@ -40,7 +41,7 @@ class SupplierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Supplier $supplier)
+    public function update(SupplierRequest $request, Supplier $supplier)
     {
         $supplier->update($request->all());
 
