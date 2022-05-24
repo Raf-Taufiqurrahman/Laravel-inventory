@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\{
-    DashboardController, CategoryController, SupplierController, ProductController, StockController
+    DashboardController, CategoryController, CustomerController, SupplierController,
+    ProductController, StockController,
 };
 use Illuminate\Support\Facades\Route;
 
@@ -25,5 +26,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
     Route::resource('/category', CategoryController::class)->except('show', 'create', 'edit');
     Route::resource('/supplier', SupplierController::class)->except('show', 'create', 'edit');
     Route::resource('/product', ProductController::class)->except('show');
+    Route::resource('/customer', CustomerController::class);
     Route::resource('/stock', StockController::class)->only('index', 'update');
 });
