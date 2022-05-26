@@ -10,7 +10,7 @@ class CategoryController extends Controller
 {
     public function __invoke()
     {
-        $categories = Category::all();
+        $categories = Category::paginate();
 
         return response()->json([
             'success' => true,
