@@ -26,7 +26,7 @@ class SupplierRequest extends FormRequest
         if(request()->isMethod('POST')){
             $data = [
                 'name' => 'required',
-                'telp' => 'required|numeric|max:12',
+                'telp' => 'required|numeric',
                 'address' => 'required'
             ];
         }elseif(request()->isMethod('PUT')){
