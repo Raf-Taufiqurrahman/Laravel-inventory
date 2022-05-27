@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\{
     DashboardController, CategoryController, CustomerController, SupplierController,
     ProductController, StockController,
 };
+use App\Http\Controllers\LandingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +18,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', LandingController::class);
+
+
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
