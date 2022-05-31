@@ -40,7 +40,7 @@
             </h2>
             @foreach ($products as $product)
                 <div class="col-md-6 col-lg-4">
-                    <a href="#" class="card card-stacked">
+                    <a href="{{ route('product.show', $product->slug) }}" class="card card-stacked">
                         <div class="ribbon bg-red">{{ $product->category->name }}</div>
                         <div class="card-body">
                             <h3 class="card-title">{{ $product->name }}</h3>
