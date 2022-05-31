@@ -4,7 +4,9 @@ use App\Http\Controllers\Admin\{
     DashboardController, CategoryController, CustomerController, SupplierController,
     ProductController, StockController,
 };
-use App\Http\Controllers\LandingController;
+use App\Http\Controllers\{
+    LandingController, ProductController as LandingProductController,
+};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +21,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', LandingController::class);
+
+Route::get('/product/{slug}', [LandingProductController::class,'show'])->name('product.show');
 
 
 

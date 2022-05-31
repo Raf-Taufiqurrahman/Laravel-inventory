@@ -44,9 +44,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $product = Product::with('category')->where('slug', $slug)->first();
+
+        return view('landing.product.show', compact('product'));
     }
 
     /**
