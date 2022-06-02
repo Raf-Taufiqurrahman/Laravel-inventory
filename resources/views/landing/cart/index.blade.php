@@ -3,9 +3,20 @@
 @section('content')
     <x-container>
         <div class="col-12 col-md-12 col-lg-12">
-            <form>
-                <x-button-save title="Konfirmasi Pesanan" icon="check" class="btn bg-teal my-2 text-white" />
-            </form>
+            {{-- <x-button-save title="Konfirmasi Pesanan" icon="check" class="btn bg-teal my-2 text-white" /> --}}
+            <x-button-modal-small title="Konfirmasi Pesanan" class="btn bg-teal my-2 text-white" icon="check" style="mr-1" />
+            <x-modal-small>
+                <form action="{{ route('transaction.store') }}" method="POST">
+                    @csrf
+                    <div class="modal-title">Apakah Pesanan anda sudah sesuai?</div>
+                    <p>Pastikan kembali produk yang anda pesan sudah seusai dengan kebutuhan anda.</p>
+                    <div>
+                        <button type="button" class="btn btn-dark" data-dismiss="modal">Kembali</button>
+                        <button type="submit" class="btn btn-primary">Ya, Pesan sekarang</button>
+                    </div>
+                </form>
+            </x-modal-small>
+
             <x-card title="Keranjang" class="card-body p-0">
                 <x-table>
                     <thead>
