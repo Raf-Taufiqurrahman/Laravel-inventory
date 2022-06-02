@@ -9,6 +9,67 @@
         <a href="/" class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pr-0 pr-md-3 mt-2">
             <h2 class="font-weight-bold">ATK</h2>
         </a>
+        <div class="navbar-nav flex-row order-md-last">
+            @guest
+                <a href="{{ route('login') }}" class="nav-item mr-2">Login</a>
+                <a href="{{ route('register') }}" class="nav-item">Register</a>
+            @endguest
+            @auth
+                <div class="nav-item dropdown d-none d-md-flex mr-3">
+                    <a href="{{ route('cart.index') }}" class="nav-link px-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart"
+                            width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <circle cx="6" cy="19" r="2"></circle>
+                            <circle cx="17" cy="19" r="2"></circle>
+                            <path d="M17 17h-11v-14h-2"></path>
+                            <path d="M6 5l14 1l-1 7h-13"></path>
+                        </svg>
+                        <span class="badge bg-red">{{ Auth::user()->carts()->count() }}</span>
+                    </a>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-toggle="dropdown">
+                        <span class="avatar" style="background-image: url({{ Auth::user()->avatar }})"></span>
+                        <div class="d-none d-xl-block pl-2">
+                            <div>{{ Auth::user()->name }}</div>
+                            <div class="mt-1 small text-muted">{{ Auth::user()->email }}</div>
+                        </div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="icon dropdown-item-icon icon-tabler icon-tabler-layout-dashboard" width="24"
+                                height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M4 4h6v8h-6z"></path>
+                                <path d="M4 16h6v4h-6z"></path>
+                                <path d="M14 12h6v8h-6z"></path>
+                                <path d="M14 4h6v4h-6z"></path>
+                            </svg>
+                            Dashboard
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon dropdown-item-icon" width="24" height="24"
+                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z"></path>
+                                <path d="M7 6a7.75 7.75 0 1 0 10 0"></path>
+                                <line x1="12" y1="4" x2="12" y2="12"></line>
+                            </svg>
+                            Logout
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </a>
+                    </div>
+                </div>
+            @endauth
+        </div>
     </div>
 </header>
 <div class="navbar-expand-md">
@@ -86,27 +147,6 @@
                     </a>
                 </li>
             </ul>
-            <div class="my-2 my-md-0 flex-grow-1 flex-md-grow-0 order-first order-md-last">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                    class="icon icon-tabler icon-tabler-shopping-cart" width="24" height="24"
-                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <circle cx="6" cy="19" r="2"></circle>
-                                    <circle cx="17" cy="19" r="2"></circle>
-                                    <path d="M17 17h-11v-14h-2"></path>
-                                    <path d="M6 5l14 1l-1 7h-13"></path>
-                                </svg>
-                            </span>
-                            <span class="badge bg-red"></span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </div>
 </div>

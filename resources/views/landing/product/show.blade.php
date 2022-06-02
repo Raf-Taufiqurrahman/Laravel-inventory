@@ -20,17 +20,20 @@
                                     <line x1="10" y1="12" x2="14" y2="12"></line>
                                 </svg>
                                 Stok Produk :
-                                <span class="text-success">{{ $product->quantity }}</span>
+                                <span
+                                    class="{{ $product->quantity > 0 ? 'text-success' : 'text-danger' }}">{{ $product->quantity }}
+                                </span>
                             </p>
-                            <div class="row">
-                                <div class="col-1">
-                                    <x-input name="quantity" title="" type="number" placeholder="" value="" />
-                                </div>
-                                <div class="mt-2">
-                                    <button class="btn btn-primary">
-                                        <i class="fas fa-shopping-cart mr-1"></i> Tambah Kekeranjang
-                                    </button>
-                                </div>
+                            <div class="mt-2">
+                                <form action="{{ route('cart.store', $product->slug) }}" method="POST">
+                                    @csrf
+                                    @if ($product->quantity > 0)
+                                        <x-button-save title="Tambahkan Keranjang" icon="shopping-cart"
+                                            class="btn btn-primary" />
+                                    @else
+                                        <div class="alert alert-danger">Produk tidak tersedia !</div>
+                                    @endif
+                                </form>
                             </div>
                         </div>
                         <div class="col-4">
