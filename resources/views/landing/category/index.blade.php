@@ -1,9 +1,5 @@
 @extends('layouts.frontend.master', ['title' => 'ATK - Kategori'])
 
-@section('hero')
-    @include('layouts.frontend.hero')
-@endsection
-
 @section('content')
     <div class="container-xl">
         <div class="page-header">
@@ -18,7 +14,7 @@
         <div class="row">
             @foreach ($categories as $category)
                 <div class="col-md-6 col-lg-2">
-                    <div class="card card-sm border-0">
+                    <a class="card card-sm border-0" href="{{ route('category.show', $category->slug) }}">
                         <div class="card-body">
                             <div class="row align-items-center">
                                 <div class="col-auto">
@@ -32,7 +28,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             @endforeach
         </div>

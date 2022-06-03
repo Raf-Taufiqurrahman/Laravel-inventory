@@ -1,44 +1,17 @@
 @extends('layouts.frontend.master', ['title' => 'ATK'])
 
-@section('hero')
-    @include('layouts.frontend.hero')
-@endsection
-
 @section('content')
     <div class="container-xl">
         <div class="page-header">
             <div class="row align-items-center">
-                <div class="d-flex justify-content-between">
+                <div class="col-auto">
                     <h2 class="page-title font-weight-bold text-uppercase">
-                        Daftar Kategori
+                        Daftar Produk Dengan Kategori : {{ $category->name }}
                     </h2>
-                    <a href="{{ route('category.index') }}" class="text-decoration-underline">Lihat Lebih banyak</a>
                 </div>
             </div>
         </div>
         <div class="row">
-            @foreach ($categories as $category)
-                <div class="col-md-6 col-lg-2">
-                    <a class="card card-sm border-0" href="{{ route('category.show', $category->slug) }}">
-                        <div class="card-body">
-                            <div class="row align-items-center">
-                                <div class="col-auto">
-                                    <span class="avatar rounded"
-                                        style="background-image: url({{ $category->image }})"></span>
-                                </div>
-                                <div class="col">
-                                    <div class="font-weight-medium">
-                                        {{ $category->name }}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            @endforeach
-            <h2 class="page-title font-weight-bold text-uppercase my-3">
-                Daftar Produk
-            </h2>
             @foreach ($products as $product)
                 <div class="col-md-6 col-lg-4">
                     <a href="{{ route('product.show', $product->slug) }}" class="card card-stacked">
@@ -62,9 +35,6 @@
                     </a>
                 </div>
             @endforeach
-            <div class="col-12 d-flex justify-content-center my-2">
-                <a href="{{ route('product.index') }}" class="btn btn-dark">Lihat Lebih Banyak</a>
-            </div>
         </div>
     </div>
 @endsection
