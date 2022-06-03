@@ -16,9 +16,9 @@ class LandingController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $products = Product::with('category', 'supplier')->paginate(6);
+        $products = Product::with('category', 'supplier')->get();
 
-        $categories = Category::paginate(6);
+        $categories = Category::get();
 
         return view('landing.welcome', compact('products', 'categories'));
     }

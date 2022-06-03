@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\{
 };
 use App\Http\Controllers\{
     LandingController, ProductController as LandingProductController,
-    CartController, TransactionController
+    CartController, TransactionController, CategoryController as LandingCategoryController,
 };
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +23,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', LandingController::class)->name('landing');
 
-Route::get('/product/{slug}', [LandingProductController::class,'show'])->name('product.show');
+Route::controller(LandingCategoryController::class)->as('category.')->group(function(){
+    Route::get('/category', 'index')->name('index');
+    Route::get('/category/{slug}', 'show')->name('show');
+});
+
+Route::controller(LandingProductController::class)->as('product.')->group(function(){
+    Route::get('/product', 'index')->name('index');
+    Route::get('/product/{slug}', 'show')->name('show');
+});
 
 Route::controller(CartController::class)->middleware('auth')->group(function(){
     Route::get('/cart', 'index')->name('cart.index');
