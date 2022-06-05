@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('slug');
             $table->string('type');
             $table->string('license_plat');
+            $table->string('image');
             $table->string('status');
             $table->timestamps();
         });

@@ -112,6 +112,26 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link {{ Route::is('admin.vehicle*') ? 'active' : '' }}"
+                        href="{{ route('admin.vehicle.index') }}">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block mr-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-steering-wheel"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <circle cx="12" cy="12" r="9"></circle>
+                                <circle cx="12" cy="12" r="2"></circle>
+                                <line x1="12" y1="14" x2="12" y2="21"></line>
+                                <line x1="10" y1="12" x2="3.25" y2="10"></line>
+                                <line x1="14" y1="12" x2="20.75" y2="10"></line>
+                            </svg>
+                        </span>
+                        <span class="nav-link-title">
+                            Kendaraan
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link {{ Route::is('admin.customer*') ? 'active' : '' }}"
                         href="{{ route('admin.customer.index') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block mr-1">
