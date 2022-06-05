@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Admin\{
     DashboardController, CategoryController, CustomerController, SupplierController,
-    ProductController, StockController,
+    ProductController, StockController, VehicleController
 };
 use App\Http\Controllers\{
     LandingController, ProductController as LandingProductController,
@@ -49,4 +49,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
     Route::resource('/product', ProductController::class)->except('show');
     Route::resource('/customer', CustomerController::class);
     Route::resource('/stock', StockController::class)->only('index', 'update');
+    Route::resource('/vehicle', VehicleController::class)->except('show', 'create', 'edit');
 });
