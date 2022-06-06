@@ -10,7 +10,8 @@
                             <th>#</th>
                             <th>Foto</th>
                             <th>Nama</th>
-                            <th>Merk</th>
+                            <th>Merek</th>
+                            <th>Tipe</th>
                             <th>No.Polisi</th>
                             <th>Aksi</th>
                         </tr>
@@ -24,6 +25,9 @@
                                         style="background-image: url({{ $vehicle->image }})"></span>
                                 </td>
                                 <td>{{ $vehicle->name }}</td>
+                                <td>{{ $vehicle->merk }}</td>
+                                <td>{{ $vehicle->type }}</td>
+                                <td>{{ $vehicle->license_plat }}</td>
                                 <td>
                                     <x-button-modal :id="$vehicle->id" title="" icon="edit" style="" class="btn btn-info" />
                                     <x-modal :id="$vehicle->id" title="Edit - {{ $vehicle->name }}">
@@ -33,6 +37,12 @@
                                             @method('PUT')
                                             <x-input name="name" type="text" title="Nama Kategori"
                                                 placeholder="Nama Kategori" :value="$vehicle->name" />
+                                            <x-input name="merk" type="text" title="Merek Kendaraan"
+                                                placeholder="Merek Kendaraan" :value="$vehicle->merk" />
+                                            <x-input name="type" type="text" title="Tipe Kendaraan"
+                                                placeholder="Tipe Kendaraan" :value="$vehicle->type" />
+                                            <x-input name="license_plat" type="text" title="No. Polisi Kendaraan"
+                                                placeholder="No.Polisi Kendaraan" :value="$vehicle->license_plat" />
                                             <x-input name="image" type="file" title="Foto Katagori" placeholder=""
                                                 :value="$vehicle->image" />
                                             <x-button-save title="Simpan" icon="save" class="btn btn-primary" />
@@ -50,8 +60,16 @@
             <x-card title="TAMBAH KENDARAAN" class="card-body">
                 <form action="{{ route('admin.vehicle.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <x-input name="name" type="text" title="Nama Kategori" placeholder="Nama Kategori" :value="old('name')" />
-                    <x-input name="image" type="file" title="Foto Katagori" placeholder="" :value="old('image')" />
+                    <x-input name="name" type="text" title="Nama Kendaraan" placeholder="Nama Kendaraan"
+                        :value="old('name')" />
+                    <x-input name="merk" type="text" title="Merek Kendaraan" placeholder="Merek Kendaraan"
+                        :value="old('merk')" />
+                    <x-input name="type" type="text" title="Tipe Kendaraan" placeholder="Tipe Kendaraan"
+                        :value="old('type')" />
+                    <x-input name="license_plat" type="text" title="No. Polisi Kendaraan" placeholder="No.Polisi Kendaraan"
+                        :value="old('license_plat')" />
+                    <x-toggle name="condition" title="Kondisi Kendaraan" subTitle="Service" value="1" />
+                    <x-input name="image" type="file" title="Foto Kendaraan" placeholder="" :value="old('image')" />
                     <x-button-save title="Simpan" icon="save" class="btn btn-primary" />
                 </form>
             </x-card>

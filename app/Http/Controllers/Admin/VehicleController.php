@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Vehicle;
+use App\Traits\HasImage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\VehicleRequest;
+use Illuminate\Support\Facades\Storage;
 
 class VehicleController extends Controller
 {
+    use HasImage;
     /**
      * Display a listing of the resource.
      *
@@ -20,46 +24,26 @@ class VehicleController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(VehicleRequest $request)
     {
-        //
-    }
+        $image = $this->uploadImage($request, $path = 'public/vehicles/', $name = 'image');
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        Vehicle::create([
+            'name' => $request->name,
+            'image' => $image->hashName(),
+            'type' => $request->type,
+            'merk' => $request->merk,
+            'license_plat' => $request->license_plat,
+            'condition' => $request->condition ? 1 : 0,
+            'status' => 'Tersedia',
+        ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return back()->with('toast_success', 'Kendaraan Berhasil Ditambahkan');
     }
 
     /**
@@ -69,9 +53,25 @@ class VehicleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(VehicleRequest $request, Vehicle $vehicle)
     {
-        //
+        $image = $this->uploadImage($request, $path = 'public/vehicels/', $name = 'image');
+
+        $vehicle->update([
+            'name' => $request->name,
+            'type' => $request->type,
+            'merk' => $request->merk,
+            'license_plat' => $request->license_plat,
+            'condition' => $request->condition ? 1 : 0,
+        ]);
+
+        if($request->file($name)){
+            $this->updateImage(
+                $path = 'public/vehicles/', $name = 'image', $data = $vehicle, $url = $image->hashName()
+            );
+        }
+
+        return back()->with('toast_success', 'Kendaraan Berhasil Diubah');
     }
 
     /**
@@ -80,8 +80,12 @@ class VehicleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Vehicle $vehicle)
     {
-        //
+        $vehicle->delete();
+
+        Storage::disk('local')->delete('public/vehicles/'. basename($vehicle->image));
+
+        return back()->with('toast_success', 'Kendaraan Berhasil Dihapus');
     }
 }
