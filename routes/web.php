@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\{
 use App\Http\Controllers\{
     LandingController, ProductController as LandingProductController,
     CartController, TransactionController, CategoryController as LandingCategoryController,
+    VehicleController as LandingVehicleController
 };
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,11 @@ Route::controller(LandingCategoryController::class)->as('category.')->group(func
 Route::controller(LandingProductController::class)->as('product.')->group(function(){
     Route::get('/product', 'index')->name('index');
     Route::get('/product/{slug}', 'show')->name('show');
+});
+
+Route::controller(LandingVehicleController::class)->as('vehicle.')->group(function(){
+    Route::get('/vehicle', 'index')->name('index');
+    Route::post('/vehicle', 'store')->name('store');
 });
 
 Route::controller(CartController::class)->middleware('auth')->group(function(){

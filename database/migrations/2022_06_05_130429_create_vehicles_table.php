@@ -18,8 +18,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('type');
+            $table->string('merk');
             $table->string('license_plat');
             $table->string('image');
+            $table->boolean('condition')->default(false);
             $table->string('status');
             $table->timestamps();
         });
