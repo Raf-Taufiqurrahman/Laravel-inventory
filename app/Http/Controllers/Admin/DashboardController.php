@@ -2,8 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\Product;
+use App\Models\Vehicle;
+use App\Models\Category;
+use App\Models\Supplier;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
+use App\Models\TransactionDetail;
+use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
@@ -15,6 +22,22 @@ class DashboardController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('admin.dashboard');
+        $categories = Category::count();
+
+        $vehicles = Vehicle::count();
+
+        $suppliers = Supplier::count();
+
+        $products = Product::count();
+
+        $customers = User::count();
+
+        $transactions = TransactionDetail::sum('quantity');
+
+        $transactionThisMonth = TransactionDetail::whereMonth('created_at', date('m'))->sum('quantity');
+
+        $productsOutStock = Product::where('quantity', '<=', 10)->paginate(6);
+
+        return view('admin.dashboard', compact('categories', 'vehicles', 'suppliers', 'products', 'customers', 'transactions', 'transactionThisMonth', 'productsOutStock'));
     }
 }

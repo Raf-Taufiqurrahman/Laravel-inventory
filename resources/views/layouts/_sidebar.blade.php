@@ -107,7 +107,7 @@
                             </svg>
                         </span>
                         <span class="nav-link-title">
-                            Produk
+                            Barang
                         </span>
                     </a>
                 </li>

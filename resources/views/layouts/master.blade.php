@@ -56,6 +56,7 @@
     <script src="{{ asset('dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('dist/libs/jquery/dist/jquery.slim.min.js') }}"></script>
     <script src="{{ asset('dist/libs/selectize/dist/js/standalone/selectize.min.js') }}"></script>
+    <script src="{{ asset('dist/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
 
 
     <!-- Tabler Core -->

@@ -48,4 +48,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(Cart::class);
     }
+
+    public function getAvatarAttribute($avatar)
+    {
+        if ($avatar != null) :
+            return asset('storage/avatars/'.$avatar);
+        else :
+            return 'https://ui-avatars.com/api/?name=' . str_replace(' ', '+', $this->name) . '&background=4e73df&color=ffffff&size=100';
+        endif;
+    }
 }
