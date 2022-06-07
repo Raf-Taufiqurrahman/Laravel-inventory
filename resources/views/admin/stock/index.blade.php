@@ -26,13 +26,13 @@
                                         style="background-image: url({{ $product->image }})"></span>
                                 </td>
                                 <td>{{ $product->name }}</td>
-                                <td>{{ $product->name }}</td>
                                 <td>{{ $product->supplier->name }}</td>
                                 <td>{{ $product->category->name }}</td>
+                                <td>{{ $product->unit }}</td>
                                 <td>{{ $product->quantity }}</td>
                                 <td>
-                                    <x-button-modal :id="$product->id" icon="plus" style="mr-1" title="Tambahkan Stok Produk"
-                                        class="btn bg-teal text-white" />
+                                    <x-button-modal :id="$product->id" icon="plus" style="mr-1" title="Stok"
+                                        class="btn bg-teal btn-sm text-white" />
                                     <x-modal :id="$product->id" title="Tambah Stok Produk - {{ $product->name }}">
                                         <form action="{{ route('admin.stock.update', $product->id) }}" method="POST"
                                             enctype="multipart/form-data">

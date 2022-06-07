@@ -26,7 +26,6 @@ class TransactionController extends Controller
         $transaction = Transaction::create([
             'invoice' => $invoice,
             'user_id' => Auth::id(),
-            'status' => false,
         ]);
 
         $carts = Cart::where('user_id', Auth::id())->get();

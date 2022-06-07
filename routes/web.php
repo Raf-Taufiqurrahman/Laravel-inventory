@@ -2,12 +2,12 @@
 
 use App\Http\Controllers\Admin\{
     DashboardController, CategoryController, CustomerController, SupplierController,
-    ProductController, StockController, VehicleController
+    ProductController, StockController, VehicleController, TransactionController
 };
 use App\Http\Controllers\{
     LandingController, ProductController as LandingProductController,
-    CartController, TransactionController, CategoryController as LandingCategoryController,
-    VehicleController as LandingVehicleController
+    CartController, TransactionController as LandingTransactionController,
+    CategoryController as LandingCategoryController, VehicleController as LandingVehicleController
 };
 use Illuminate\Support\Facades\Route;
 
@@ -46,7 +46,7 @@ Route::controller(CartController::class)->middleware('auth')->group(function(){
     Route::put('/cart/update/{cart:id}', 'update')->name('cart.update');
 });
 
-Route::post('/transaction', [TransactionController::class, 'store'])->middleware('auth')->name('transaction.store');
+Route::post('/transaction', [LandingTransactionController::class, 'store'])->middleware('auth')->name('transaction.store');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
@@ -56,4 +56,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
     Route::resource('/customer', CustomerController::class);
     Route::resource('/stock', StockController::class)->only('index', 'update');
     Route::resource('/vehicle', VehicleController::class)->except('show', 'create', 'edit');
+
+    Route::controller(TransactionController::class)->group(function(){
+        Route::get('/transaction/product', 'product')->name('transaction.product');
+    });
 });

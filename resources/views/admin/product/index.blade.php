@@ -26,9 +26,9 @@
                                         style="background-image: url({{ $product->image }})"></span>
                                 </td>
                                 <td>{{ $product->name }}</td>
-                                <td>{{ $product->name }}</td>
                                 <td>{{ $product->supplier->name }}</td>
                                 <td>{{ $product->category->name }}</td>
+                                <td>{{ $product->unit }}</td>
                                 <td>
                                     <x-button-modal :id="$product->id" icon="info" style="" title=""
                                         class="btn btn-success" />
