@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\Admin\{
-    DashboardController, CategoryController, CustomerController, PermissionController, SupplierController,
+    DashboardController, CategoryController, PermissionController, SupplierController,
     ProductController, RoleController, StockController, VehicleController, TransactionController,
-    UserController
+    UserController, OrderController
+};
+use App\Http\Controllers\Customer\{
+    DashboardController as CustomerDashboardController, OrderController as CustomerOrderController, TransactionController as CustomerTransactionController
 };
 use App\Http\Controllers\{
     LandingController, ProductController as LandingProductController,
@@ -11,17 +14,6 @@ use App\Http\Controllers\{
     CategoryController as LandingCategoryController, VehicleController as LandingVehicleController
 };
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', LandingController::class)->name('landing');
 
@@ -49,13 +41,14 @@ Route::controller(CartController::class)->middleware('auth')->group(function(){
 
 Route::post('/transaction', [LandingTransactionController::class, 'store'])->middleware('auth')->name('transaction.store');
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'role:Admin|Super Admin']], function () {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
     Route::resource('/category', CategoryController::class)->except('show', 'create', 'edit');
     Route::resource('/supplier', SupplierController::class)->except('show', 'create', 'edit');
     Route::resource('/product', ProductController::class)->except('show');
     Route::resource('/stock', StockController::class)->only('index', 'update');
     Route::resource('/vehicle', VehicleController::class)->except('show', 'create', 'edit');
+    Route::resource('/order', OrderController::class);
     Route::resource('/user', UserController::class);
     Route::resource('/role', RoleController::class);
     Route::resource('/permission', PermissionController::class)->except('show', 'create', 'edit');
@@ -64,4 +57,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
         Route::get('/transaction/product', 'product')->name('transaction.product');
         Route::get('/transaction/vehicle', 'vehicle')->name('transaction.vehicle');
     });
+});
+
+Route::group(['prefix' => 'customer', 'as' => 'customer.', 'middleware' => ['auth', 'role:Customer']], function (){
+    Route::get('/dashboard', CustomerDashboardController::class)->name('dashboard');
+    Route::get('/transaction', CustomerTransactionController::class)->name('transaction');
+    Route::resource('/order', CustomerOrderController::class);
 });

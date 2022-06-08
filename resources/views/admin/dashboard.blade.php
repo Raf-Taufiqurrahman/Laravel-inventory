@@ -109,10 +109,18 @@
             </x-widget>
         </div>
         <div class="col-12">
-            <div class="alert alert-info d-flex align-items-center" role="alert">
-                <i class="fas fa-info-circle mr-2 fa-lg"></i>
-                Saat ini belum ada permintaan barang
-            </div>
+            @if ($orders->count() == 0)
+                <div class="alert alert-info d-flex align-items-center" role="alert">
+                    <i class="fas fa-info-circle mr-2 fa-lg"></i>
+                    Saat ini belum ada permintaan barang
+                </div>
+            @else
+                <div class="alert alert-danger d-flex align-items-center" role="alert">
+                    <i class="fas fa-info-circle mr-2 fa-lg"></i>
+                    Saat ini terdapat {{ $orders->count() }} permintaan barang menunggu konfirmasi.
+                    <a href="" class="ml-1">Lihat Detail Permintaan</a>
+                </div>
+            @endif
         </div>
         <div class="col-6">
             <x-card title="List Barang dengan stok kurang dari 10">

@@ -9,7 +9,7 @@
                     <img src="{{ Auth::user()->avatar }}" class="avatar" />
                     <div class="d-none d-xl-block pl-2">
                         <div>{{ Auth::user()->name }}</div>
-                        <div class="mt-1 small text-muted">{{ Auth::user()->email }}</div>
+                        <div class="mt-1 small text-muted">{{ Auth::user()->roles->pluck('name')[0] }}</div>
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
