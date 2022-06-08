@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\Vehicle;
 use App\Models\Category;
@@ -38,6 +39,8 @@ class DashboardController extends Controller
 
         $productsOutStock = Product::where('quantity', '<=', 10)->paginate(6);
 
-        return view('admin.dashboard', compact('categories', 'vehicles', 'suppliers', 'products', 'customers', 'transactions', 'transactionThisMonth', 'productsOutStock'));
+        $orders = Order::where('status', 0)->get();
+
+        return view('admin.dashboard', compact('categories', 'vehicles', 'suppliers', 'products', 'customers', 'transactions', 'transactionThisMonth', 'productsOutStock', 'orders'));
     }
 }

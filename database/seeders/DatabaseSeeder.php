@@ -20,12 +20,14 @@ class DatabaseSeeder extends Seeder
         $role = Role::create(['name' => 'Super Admin']);
 
         $user = User::create([
-            'name' => 'admin',
-            'email' => 'admin@gmail.com',
+            'name' => 'Rafi',
+            'email' => 'rafi@gmail.com',
             'password' => bcrypt('password'),
             'department' => 'Umum'
         ]);
 
         $user->assignRole($role);
+
+        Role::create(['name' => 'Customer']);
     }
 }

@@ -38,19 +38,36 @@
                         </div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                class="icon dropdown-item-icon icon-tabler icon-tabler-layout-dashboard" width="24"
-                                height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                <path d="M4 4h6v8h-6z"></path>
-                                <path d="M4 16h6v4h-6z"></path>
-                                <path d="M14 12h6v8h-6z"></path>
-                                <path d="M14 4h6v4h-6z"></path>
-                            </svg>
-                            Dashboard
-                        </a>
+                        @hasanyrole('Admin|Super Admin')
+                            <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="icon dropdown-item-icon icon-tabler icon-tabler-layout-dashboard" width="24"
+                                    height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M4 4h6v8h-6z"></path>
+                                    <path d="M4 16h6v4h-6z"></path>
+                                    <path d="M14 12h6v8h-6z"></path>
+                                    <path d="M14 4h6v4h-6z"></path>
+                                </svg>
+                                Dashboard
+                            </a>
+                        @endhasanyrole
+                        @role('Customer')
+                            <a class="dropdown-item" href="{{ route('customer.dashboard') }}">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="icon dropdown-item-icon icon-tabler icon-tabler-layout-dashboard" width="24"
+                                    height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M4 4h6v8h-6z"></path>
+                                    <path d="M4 16h6v4h-6z"></path>
+                                    <path d="M14 12h6v8h-6z"></path>
+                                    <path d="M14 4h6v4h-6z"></path>
+                                </svg>
+                                Dashboard
+                            </a>
+                        @endrole
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
