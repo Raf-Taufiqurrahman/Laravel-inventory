@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\{
-    DashboardController, CategoryController, CustomerController, SupplierController,
-    ProductController, StockController, VehicleController, TransactionController
+    DashboardController, CategoryController, CustomerController, PermissionController, SupplierController,
+    ProductController, RoleController, StockController, VehicleController, TransactionController,
+    UserController
 };
 use App\Http\Controllers\{
     LandingController, ProductController as LandingProductController,
@@ -53,11 +54,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
     Route::resource('/category', CategoryController::class)->except('show', 'create', 'edit');
     Route::resource('/supplier', SupplierController::class)->except('show', 'create', 'edit');
     Route::resource('/product', ProductController::class)->except('show');
-    Route::resource('/customer', CustomerController::class);
     Route::resource('/stock', StockController::class)->only('index', 'update');
     Route::resource('/vehicle', VehicleController::class)->except('show', 'create', 'edit');
+    Route::resource('/user', UserController::class);
+    Route::resource('/role', RoleController::class);
+    Route::resource('/permission', PermissionController::class)->except('show', 'create', 'edit');
 
     Route::controller(TransactionController::class)->group(function(){
         Route::get('/transaction/product', 'product')->name('transaction.product');
+        Route::get('/transaction/vehicle', 'vehicle')->name('transaction.vehicle');
     });
 });
