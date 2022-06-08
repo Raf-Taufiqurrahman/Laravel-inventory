@@ -131,25 +131,6 @@
                         </span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ Route::is('admin.customer*') ? 'active' : '' }}"
-                        href="{{ route('admin.customer.index') }}">
-                        <span class="nav-link-icon d-md-none d-lg-inline-block mr-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users"
-                                width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                <circle cx="9" cy="7" r="4"></circle>
-                                <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                                <path d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path>
-                            </svg>
-                        </span>
-                        <span class="nav-link-title">
-                            Customer
-                        </span>
-                    </a>
-                </li>
                 <div class="hr-text hr-text-left ml-2 mb-2 mt-2">Stok Produk</div>
                 <li class="nav-item">
                     <a class="nav-link {{ Route::is('admin.stock*') ? 'active' : '' }}"
@@ -215,7 +196,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Route::is('admin.transaction*') ? 'active' : '' }}"
+                    <a class="nav-link {{ Route::is('admin.transaction.product') ? 'active' : '' }}"
                         href="{{ route('admin.transaction.product') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block mr-1">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart-x"
@@ -236,7 +217,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link {{ Route::is('admin.transaction.vehicle') ? 'active' : '' }}"
+                        href="{{ route('admin.transaction.vehicle') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block mr-1">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-car-off"
                                 width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
@@ -251,6 +233,82 @@
                         </span>
                         <span class="nav-link-title">
                             Kendaraan Keluar
+                        </span>
+                    </a>
+                </li>
+                <div class="hr-text hr-text-left ml-2 mb-2 mt-2">User Manajemen</div>
+                <li class="nav-item">
+                    <a class="nav-link {{ Route::is('admin.permission*') ? 'active' : '' }}"
+                        href="{{ route('admin.permission.index') }}">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block mr-1">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="icon icon-tabler icon-tabler-user-exclamation" width="24" height="24"
+                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+                                <line x1="19" y1="7" x2="19" y2="10"></line>
+                                <line x1="19" y1="14" x2="19" y2="14.01"></line>
+                            </svg>
+                        </span>
+                        <span class="nav-link-title">
+                            Permission
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Route::is('admin.role*') ? 'active' : '' }}"
+                        href="{{ route('admin.role.index') }}">
+                        <span class="   nav-link-icon d-md-none d-lg-inline-block mr-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-check"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+                                <path d="M16 11l2 2l4 -4"></path>
+                            </svg>
+                        </span>
+                        <span class="nav-link-title">
+                            Role
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Route::is('admin.user*') ? 'active' : '' }}"
+                        href="{{ route('admin.user.index') }}">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block mr-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <circle cx="12" cy="12" r="9"></circle>
+                                <circle cx="12" cy="10" r="3"></circle>
+                                <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
+                            </svg>
+                        </span>
+                        <span class="nav-link-title">
+                            User
+                        </span>
+                    </a>
+                </li>
+                <div class="hr-text hr-text-left ml-2 mb-2 mt-2">Konfigurasi</div>
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block mr-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-settings"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path
+                                    d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z">
+                                </path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </span>
+                        <span class="nav-link-title">
+                            Akun
                         </span>
                     </a>
                 </li>

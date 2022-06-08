@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('requirement');
             $table->dateTime('start_date');
             $table->dateTime('end_date')->nullable();
+            $table->string('status');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

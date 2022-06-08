@@ -13,6 +13,11 @@ class Vehicle extends Model
 
     protected $guarded = [];
 
+    public function rents()
+    {
+        return $this->hasMany(Rent::class);
+    }
+
     protected function image(): Attribute
     {
         return Attribute::make(
