@@ -27,15 +27,68 @@
                                 <td>{{ $order->name }}</td>
                                 <td>{{ $order->quantity }}</td>
                                 <td>{{ $order->unit }}</td>
-                                <td class="{{ $order->status == 0 ? 'text-danger' : 'text-success' }}">
-                                    {{ $order->status == 0 ? 'Menunggu Konfirmasi' : 'Permintaan Diterima' }}
+                                <td
+                                    class="{{ $order->status == App\Enums\OrderStatus::Pending ? 'text-danger' : 'text-success' }}">
+                                    {{ $order->status->value }}
                                 </td>
                                 <td>
-                                    <form action="{{ route('admin.order.update', $order->id) }}" method="POST">
-                                        @csrf
-                                        @method('PUT')
-                                        <x-button-save title="Konfirmasi" icon="check" class="btn btn-primary btn-sm" />
-                                    </form>
+                                    @if ($order->status == App\Enums\OrderStatus::Pending)
+                                        <form action="{{ route('admin.order.update', $order->id) }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
+                                            <x-button-save title="Konfirmasi" icon="check" class="btn btn-primary btn-sm" />
+                                        </form>
+                                    @else
+                                        <x-button-modal :id="$order->id" title="Tambahkan Permintaan" icon="plus"
+                                            style="mr-1" class="btn btn-info btn-sm" />
+                                        <x-modal :id="$order->id" title="Tambahkan Barang">
+                                            <form action="{{ route('admin.order.update', $order->id) }}" method="POST"
+                                                enctype="multipart/form-data">
+                                                @csrf
+                                                @method('PUT')
+                                                <x-input name="name" type="text" title="Nama Barang"
+                                                    placeholder="Nama Barang" :value="$order->name" />
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <x-select title="Kategori Barang" name="category_id">
+                                                            <option value="">Silahkan Pilih</option>
+                                                            @foreach ($categories as $category)
+                                                                <option value="{{ $category->id }}">
+                                                                    {{ $category->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </x-select>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <x-select title="Supplier Barang" name="supplier_id">
+                                                            <option value="">Silahkan Pilih</option>
+                                                            @foreach ($suppliers as $supplier)
+                                                                <option value="{{ $supplier->id }}">
+                                                                    {{ $supplier->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </x-select>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <x-input name="quantity" type="number" title="Kuantitas Barang"
+                                                            placeholder="" :value="$order->quantity" />
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <x-input name="unit" type="text" title="Satuan Barang"
+                                                            placeholder="Satuan Barang" :value="$order->unit" />
+                                                    </div>
+                                                </div>
+                                                <x-input name="image" type="file" title="Foto Barang" placeholder=""
+                                                    :value="$order->image" />
+                                                <x-textarea name="description" title="Deskripsi Barang"
+                                                    placeholder="Deskripsi Barang">
+                                                </x-textarea>
+                                                <x-button-save title="Simpan" icon="save" class="btn btn-primary" />
+                                            </form>
+                                        </x-modal>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

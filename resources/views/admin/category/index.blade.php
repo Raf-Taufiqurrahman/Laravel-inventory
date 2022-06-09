@@ -23,7 +23,8 @@
                                 </td>
                                 <td>{{ $category->name }}</td>
                                 <td>
-                                    <x-button-modal :id="$category->id" title="" icon="edit" style="" class="btn btn-info" />
+                                    <x-button-modal :id="$category->id" title="" icon="edit" style=""
+                                        class="btn btn-info btn-sm" />
                                     <x-modal :id="$category->id" title="Edit - {{ $category->name }}">
                                         <form action="{{ route('admin.category.update', $category->id) }}" method="POST"
                                             enctype="multipart/form-data">
@@ -36,7 +37,8 @@
                                             <x-button-save title="Simpan" icon="save" class="btn btn-primary" />
                                         </form>
                                     </x-modal>
-                                    <x-button-delete :id="$category->id" :url="route('admin.category.destroy', $category->id)" title="" class="btn btn-danger" />
+                                    <x-button-delete :id="$category->id" :url="route('admin.category.destroy', $category->id)" title=""
+                                        class="btn btn-danger btn-sm" />
                                 </td>
                             </tr>
                         @endforeach
