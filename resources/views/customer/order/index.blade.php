@@ -27,8 +27,9 @@
                                 <td>{{ $order->name }}</td>
                                 <td>{{ $order->quantity }}</td>
                                 <td>{{ $order->unit }}</td>
-                                <td class="{{ $order->status == 0 ? 'text-danger' : 'text-success' }}">
-                                    {{ $order->status == 0 ? 'Menunggu Konfirmasi' : 'Permintaan Diterima' }}
+                                <td
+                                    class="{{ $order->status == App\Enums\OrderStatus::Pending ? 'text-danger' : 'text-success' }}">
+                                    {{ $order->status->value }}
                                 </td>
                                 <td>
                                     @if ($order->status == 0)

@@ -99,7 +99,7 @@ class ProductController extends Controller
 
         if($request->file($name)){
             $this->updateImage(
-                $path = 'public/cate gories/', $name = 'image', $data = $product, $url = $image->hashName()
+                $path = 'public/products/', $name = 'image', $data = $product, $url = $image->hashName()
             );
         }
 

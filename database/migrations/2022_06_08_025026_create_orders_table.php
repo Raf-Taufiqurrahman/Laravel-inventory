@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->double('quantity')->default(0);
-            $table->boolean('status')->default(0);
+            $table->string('status')->default('Menunggu Konfirmasi');
             $table->string('image')->nullable();
             $table->string('unit');
             $table->timestamps();
