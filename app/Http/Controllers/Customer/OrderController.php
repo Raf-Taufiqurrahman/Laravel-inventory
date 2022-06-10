@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Models\Order;
+use App\Models\Product;
 use App\Traits\HasImage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -21,17 +22,13 @@ class OrderController extends Controller
     {
         $orders = Order::with('user')->where('user_id', Auth::id())->paginate(10);
 
-        return view('customer.order.index', compact('orders'));
-    }
+        $product = [];
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        foreach($orders as $order){
+            $product = Product::where('name', $order->name)->where('quantity', $order->quantity)->get();
+        }
+
+        return view('customer.order.index', compact('orders', 'product'));
     }
 
     /**

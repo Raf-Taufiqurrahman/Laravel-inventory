@@ -37,6 +37,7 @@ Route::controller(CartController::class)->middleware('auth')->group(function(){
     Route::post('/cart/{product:slug}', 'store')->name('cart.store');
     Route::delete('/cart/destroy/{cart:id}', 'destroy')->name('cart.destroy');
     Route::put('/cart/update/{cart:id}', 'update')->name('cart.update');
+    Route::post('/cart/order/{product:slug}', 'order')->name('cart.order');
 });
 
 Route::post('/transaction', [LandingTransactionController::class, 'store'])->middleware('auth')->name('transaction.store');
