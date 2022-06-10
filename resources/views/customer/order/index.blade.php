@@ -32,7 +32,7 @@
                                     {{ $order->status->value }}
                                 </td>
                                 <td>
-                                    @if ($order->status == 0)
+                                    @if ($order->status == App\Enums\OrderStatus::Pending)
                                         <x-button-modal :id="$order->id" title="" icon="edit" style=""
                                             class="btn btn-info btn-sm" />
                                         <x-modal :id="$order->id" title="Ubah Data">
@@ -53,6 +53,12 @@
                                         </x-modal>
                                         <x-button-delete :id="$order->id" :url="route('customer.order.destroy', $order->id)" title=""
                                             class="btn btn-danger btn-sm" />
+                                    @elseif($order->status == App\Enums\OrderStatus::Success)
+                                        <form action="{{ route('cart.order', $product[0]->slug) }}" method="POST">
+                                            @csrf
+                                            <x-button-save title="Tambahkan Keranjang" icon="shopping-cart"
+                                                class="btn btn-primary btn-sm" />
+                                        </form>
                                     @endif
                                 </td>
                             </tr>

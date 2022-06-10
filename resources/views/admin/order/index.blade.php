@@ -38,7 +38,7 @@
                                             @method('PUT')
                                             <x-button-save title="Konfirmasi" icon="check" class="btn btn-primary btn-sm" />
                                         </form>
-                                    @else
+                                    @elseif($order->status == App\Enums\OrderStatus::Verified)
                                         <x-button-modal :id="$order->id" title="Tambahkan Permintaan" icon="plus"
                                             style="mr-1" class="btn btn-info btn-sm" />
                                         <x-modal :id="$order->id" title="Tambahkan Barang">

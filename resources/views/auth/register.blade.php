@@ -15,8 +15,8 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="MobileOptimized" content="320" />
     <meta name="robots" content="noindex,nofollow,noarchive" />
-    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="{{ asset('icon.png') }}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ asset('icon.png') }}" type="image/x-icon" />
     <!-- Tabler Core -->
     <link href="{{ asset('dist/css/tabler.min.css') }}" rel="stylesheet" />
 </head>

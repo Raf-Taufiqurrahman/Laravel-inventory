@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Order;
 use App\Models\Product;
+use App\Enums\OrderStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -61,5 +63,27 @@ class CartController extends Controller
         }else{
             return redirect(route('landing'))->with('toast_success', 'Keranjang anda kosong');
         }
+    }
+
+    public function order(Product $product)
+    {
+        $user = Auth::user();
+
+        $orders = Order::where('user_id', $user->id)->where('name', $product->name)->get();
+
+        foreach($orders as $order){
+            $item = Product::where('name', $order->name)->where('quantity', $order->quantity)->first();
+
+            $order->update([
+                'status' => OrderStatus::Done,
+            ]);
+
+            $user->carts()->create([
+                'product_id' => $product->id,
+                'quantity' => $item->quantity,
+            ]);
+        }
+
+        return redirect(route('cart.index'))->with('toast_success', 'Produk berhasil ditambahkan keranjang');
     }
 }
