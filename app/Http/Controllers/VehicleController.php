@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Rent;
 use App\Models\Vehicle;
+use App\Enums\RentStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,7 +27,9 @@ class VehicleController extends Controller
             'start_date' => now()->timezone('Asia/Kuala_Lumpur'),
         ]);
 
-        Vehicle::whereId($vehicle->vehicle_id)->update(['status' => 'Dipinjam']);
+        Vehicle::whereId($vehicle->vehicle_id)->update([
+            'status' => RentStatus::Out,
+        ]);
 
         return back()->with('toast_success', 'Kendaraan Berhasil Dipinjam');
     }

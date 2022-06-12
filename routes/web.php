@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\{
     UserController, OrderController
 };
 use App\Http\Controllers\Customer\{
-    DashboardController as CustomerDashboardController, OrderController as CustomerOrderController, TransactionController as CustomerTransactionController
+    DashboardController as CustomerDashboardController, OrderController as CustomerOrderController, TransactionController as CustomerTransactionController, RentController as CustomerRentController
 };
 use App\Http\Controllers\{
     LandingController, ProductController as LandingProductController,
@@ -29,7 +29,7 @@ Route::controller(LandingProductController::class)->as('product.')->group(functi
 
 Route::controller(LandingVehicleController::class)->as('vehicle.')->group(function(){
     Route::get('/vehicle', 'index')->name('index');
-    Route::post('/vehicle', 'store')->name('store');
+    Route::post('/vehicle', 'store')->name('store')->middleware('auth');
 });
 
 Route::controller(CartController::class)->middleware('auth')->group(function(){
@@ -64,4 +64,5 @@ Route::group(['prefix' => 'customer', 'as' => 'customer.', 'middleware' => ['aut
     Route::get('/dashboard', CustomerDashboardController::class)->name('dashboard');
     Route::get('/transaction', CustomerTransactionController::class)->name('transaction');
     Route::resource('/order', CustomerOrderController::class);
+    Route::resource('/rent', CustomerRentController::class);
 });

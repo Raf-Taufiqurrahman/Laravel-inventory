@@ -27,7 +27,10 @@
                                     {{ $rent->end_date != null ? Carbon\Carbon::parse($rent->end_date)->format('d-m-Y (H:i:sa)') : null }}
                                 </td>
                                 <td>{{ $rent->requirement }}</td>
-                                <td></td>
+                                <td
+                                    class="{{ $rent->status == App\Enums\RentStatus::Out ? 'text-danger' : 'text-success' }}">
+                                    {{ $rent->status->value }}
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

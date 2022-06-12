@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('requirement');
             $table->dateTime('start_date');
             $table->dateTime('end_date')->nullable();
-            $table->string('status');
+            $table->string('status')->default('Kendaraan Sedang Digunakan');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
