@@ -26,7 +26,7 @@
                                 </span>
                             </ul>
                             <div>
-                                @if ($vehicle->status == 'Tersedia')
+                                @if ($vehicle->status == App\Enums\RentStatus::In)
                                     <x-button-modal id="" icon="" style="" title="Pinjam"
                                         class="btn btn-primary btn-block" />
                                 @else

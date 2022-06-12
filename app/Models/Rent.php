@@ -2,14 +2,19 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Enums\RentStatus;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Rent extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
+
+    protected $casts = [
+        'status' => RentStatus::class
+    ];
 
     public function vehicle()
     {
