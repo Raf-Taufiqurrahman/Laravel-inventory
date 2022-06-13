@@ -29,7 +29,8 @@
                                 <td>{{ $vehicle->type }}</td>
                                 <td>{{ $vehicle->license_plat }}</td>
                                 <td>
-                                    <x-button-modal :id="$vehicle->id" title="" icon="edit" style="" class="btn btn-info" />
+                                    <x-button-modal :id="$vehicle->id" title="" icon="edit" style=""
+                                        class="btn btn-info btn-sm" />
                                     <x-modal :id="$vehicle->id" title="Edit - {{ $vehicle->name }}">
                                         <form action="{{ route('admin.vehicle.update', $vehicle->id) }}" method="POST"
                                             enctype="multipart/form-data">
@@ -48,7 +49,8 @@
                                             <x-button-save title="Simpan" icon="save" class="btn btn-primary" />
                                         </form>
                                     </x-modal>
-                                    <x-button-delete :id="$vehicle->id" :url="route('admin.vehicle.destroy', $vehicle->id)" title="" class="btn btn-danger" />
+                                    <x-button-delete :id="$vehicle->id" :url="route('admin.vehicle.destroy', $vehicle->id)" title=""
+                                        class="btn btn-danger btn-sm" />
                                 </td>
                             </tr>
                         @endforeach

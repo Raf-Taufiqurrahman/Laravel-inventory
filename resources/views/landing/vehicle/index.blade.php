@@ -21,27 +21,28 @@
                                 style="background-image: url({{ $vehicle->image }})"></span>
                             <ul class="list-unstyled lh-lg">
                                 <li>{{ $vehicle->license_plat }}</li>
-                                <span class="badge {{ $vehicle->status == 'Dipinjam' ? 'bg-danger' : 'bg-success' }}">
-                                    {{ $vehicle->status == 'Dipinjam' ? 'Tidak Tersedia' : 'Tersedia' }}
+                                <span
+                                    class="badge {{ $vehicle->status == App\Enums\VehicleStatus::Out ? 'bg-danger' : 'bg-success' }}">
+                                    {{ $vehicle->status == App\Enums\VehicleStatus::Out ? 'Kendaraan Sedang Di Pinjam' : 'Kendaraan Tersedia' }}
                                 </span>
                             </ul>
                             <div>
-                                @if ($vehicle->status == App\Enums\RentStatus::In)
-                                    <x-button-modal id="" icon="" style="" title="Pinjam"
+                                @if ($vehicle->status == App\Enums\VehicleStatus::Active)
+                                    <x-button-modal id="{{ $vehicle->id }}" icon="" style="" title="Pinjam"
                                         class="btn btn-primary btn-block" />
                                 @else
                                     <div class="alert alert-danger">Kendaraan Tidak Tersedia</div>
                                 @endif
                             </div>
                         </div>
-                        <x-modal id="" title="Detail Peminjaman Kendaraan">
+                        <x-modal id="{{ $vehicle->id }}" title="Detail Peminjaman Kendaraan">
                             <form action="{{ route('vehicle.store') }}" method="POST">
                                 @csrf
+                                <x-input name="vehicle_id" type="hidden" value="{{ $vehicle->id }}" title=""
+                                    placeholder="" />
                                 <x-textarea title=" Keperluan" name="requirement"
                                     placeholder="Contoh : Untuk perjalanan dinas">
                                 </x-textarea>
-                                <x-input title="" name="vehicle_id" type="hidden" placeholder=""
-                                    value="{{ $vehicle->id }}" />
                                 <x-button-save title="Pinjam Sekarang" icon="check" class="btn btn-primary" />
                             </form>
                         </x-modal>

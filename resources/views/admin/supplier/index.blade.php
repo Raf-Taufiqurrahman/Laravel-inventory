@@ -22,7 +22,8 @@
                                 <td>{{ $supplier->telp }}</td>
                                 <td>{{ $supplier->address }}</td>
                                 <td>
-                                    <x-button-modal :id="$supplier->id" title="" icon="edit" style="" class="btn btn-info" />
+                                    <x-button-modal :id="$supplier->id" title="" icon="edit" style=""
+                                        class="btn btn-info btn-sm" />
                                     <x-modal :id="$supplier->id" title="Edit - {{ $supplier->name }}">
                                         <form action="{{ route('admin.supplier.update', $supplier->id) }}" method="POST">
                                             @csrf
@@ -36,7 +37,8 @@
                                             <x-button-save title="Simpan" icon="save" class="btn btn-primary" />
                                         </form>
                                     </x-modal>
-                                    <x-button-delete :id="$supplier->id" :url="route('admin.supplier.destroy', $supplier->id)" title="" class="btn btn-danger" />
+                                    <x-button-delete :id="$supplier->id" :url="route('admin.supplier.destroy', $supplier->id)" title=""
+                                        class="btn btn-danger btn-sm" />
                                 </td>
                             </tr>
                         @endforeach

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Vehicle;
 use App\Traits\HasImage;
+use App\Enums\VehicleStatus;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\VehicleRequest;
@@ -40,7 +41,7 @@ class VehicleController extends Controller
             'merk' => $request->merk,
             'license_plat' => $request->license_plat,
             'condition' => $request->condition ? 1 : 0,
-            'status' => 'Tersedia',
+            'status' => VehicleStatus::Active,
         ]);
 
         return back()->with('toast_success', 'Kendaraan Berhasil Ditambahkan');
