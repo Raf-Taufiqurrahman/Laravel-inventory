@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Rent;
 use App\Models\Vehicle;
-use App\Enums\RentStatus;
+use App\Enums\VehicleStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,7 +28,7 @@ class VehicleController extends Controller
         ]);
 
         Vehicle::whereId($vehicle->vehicle_id)->update([
-            'status' => RentStatus::Out,
+            'status' => VehicleStatus::Out,
         ]);
 
         return back()->with('toast_success', 'Kendaraan Berhasil Dipinjam');

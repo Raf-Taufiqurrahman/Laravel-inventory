@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum RentStatus : string {
-    case Out = 'Kendaraan Sedang Digunakan';
-    case In  = 'Kendaraan Berhasil Dikembalikan';
+enum VehicleStatus : string {
+    case Active = 'Tersedia';
+    case Out    = 'Kendaraan Sedang Digunakan';
 }

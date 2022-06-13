@@ -23,7 +23,13 @@ class TransactionController extends Controller
 
     public function vehicle()
     {
-        $rents = Rent::with('vehicle', 'user')->latest()->paginate(10);
+        $rents = Rent::with('vehicle', 'user')->when(request()->q, function($search){
+            $search = $search->whereHas('user', function($query){
+                $query->where('name', 'like', '%'.request()->q.'%');
+            })->orWhereHas('vehicle', function($query){
+                $query->where('name', 'like', '%'.request()->q.'%');
+            });
+        })->latest()->paginate(10);
 
         return view('admin.transaction.vehicle', compact('rents'));
     }

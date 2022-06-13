@@ -30,12 +30,10 @@
                                 <td>{{ $product->category->name }}</td>
                                 <td>{{ $product->unit }}</td>
                                 <td>
-                                    <x-button-modal :id="$product->id" icon="info" style="" title=""
-                                        class="btn btn-success" />
-                                    <x-modal :id="$product->id" title="Detail - {{ $product->name }}">
-                                    </x-modal>
-                                    <x-button-link title="" icon="edit" class="btn btn-info" :url="route('admin.product.edit', $product->id)" style="" />
-                                    <x-button-delete :id="$product->id" :url="route('admin.product.destroy', $product->id)" title="" class="btn btn-danger" />
+                                    <x-button-link title="" icon="edit" class="btn btn-info btn-sm" :url="route('admin.product.edit', $product->id)"
+                                        style="" />
+                                    <x-button-delete :id="$product->id" :url="route('admin.product.destroy', $product->id)" title=""
+                                        class="btn btn-danger btn-sm" />
                                 </td>
                             </tr>
                         @endforeach

@@ -3,7 +3,8 @@
 use App\Http\Controllers\Admin\{
     DashboardController, CategoryController, PermissionController, SupplierController,
     ProductController, RoleController, StockController, VehicleController, TransactionController,
-    UserController, OrderController
+    UserController, OrderController,
+    ReportController
 };
 use App\Http\Controllers\Customer\{
     DashboardController as CustomerDashboardController, OrderController as CustomerOrderController, TransactionController as CustomerTransactionController, RentController as CustomerRentController
@@ -57,6 +58,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'r
     Route::controller(TransactionController::class)->group(function(){
         Route::get('/transaction/product', 'product')->name('transaction.product');
         Route::get('/transaction/vehicle', 'vehicle')->name('transaction.vehicle');
+    });
+
+    Route::controller(ReportController::class)->group(function(){
+        Route::get('/report', 'index')->name('report');
     });
 });
 

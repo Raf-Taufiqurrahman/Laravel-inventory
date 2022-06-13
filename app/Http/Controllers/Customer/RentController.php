@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Customer;
 use App\Models\Rent;
 use App\Models\Vehicle;
 use App\Enums\RentStatus;
+use App\Enums\VehicleStatus;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -83,7 +84,7 @@ class RentController extends Controller
         ]);
 
         Vehicle::whereId($rent->vehicle_id)->update([
-            'status' => RentStatus::In,
+            'status' => VehicleStatus::Active,
         ]);
 
         return back()->with('toast_success', 'Kendaraan Berhasil Dikembalikan');
