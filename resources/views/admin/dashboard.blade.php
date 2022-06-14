@@ -143,5 +143,64 @@
             </x-card>
             <div class="d-flex justify-content-end">{{ $productsOutStock->links() }}</div>
         </div>
+        <div class="col-lg-6">
+            <x-card title="Chart Barang paling populer">
+                <div id="chart-total-sales" class="my-3"></div>
+            </x-card>
+        </div>
     </x-container>
 @endsection
+
+@push('js')
+    <script>
+        // @formatter:off
+        document.addEventListener("DOMContentLoaded", function() {
+            window.ApexCharts && (new ApexCharts(document.getElementById('chart-total-sales'), {
+                chart: {
+                    type: "donut",
+                    fontFamily: 'inherit',
+                    height: 400,
+                    sparkline: {
+                        enabled: true
+                    },
+                    animations: {
+                        enabled: true
+                    },
+                },
+                fill: {
+                    opacity: 1,
+                },
+                series: @json($total),
+                labels: @json($label),
+                grid: {
+                    strokeDashArray: 4,
+                },
+                colors: ["#206bc4", "#79a6dc", "#bfe399", "#7891b3", "#2596be"],
+                legend: {
+                    show: true,
+                    position: 'top'
+                },
+                tooltip: {
+                    fillSeriesColor: true
+                },
+                dataLabels: {
+                    enabled: true,
+                },
+                animations: {
+                    enabled: true,
+                    easing: 'easeinout',
+                    speed: 800,
+                    animateGradually: {
+                        enabled: true,
+                        delay: 150
+                    },
+                    dynamicAnimation: {
+                        enabled: true,
+                        speed: 350
+                    }
+                }
+            })).render();
+        });
+        // @formatter:on
+    </script>
+@endpush
