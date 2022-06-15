@@ -3,6 +3,9 @@
 @section('content')
     <x-container>
         <div class="col-8">
+            <form action="{{ route('admin.category.index') }}" method="GET">
+                <x-search name="search" :value="$search" />
+            </form>
             <x-card title="DAFTAR KATEGORI" class="card-body p-0">
                 <x-table>
                     <thead>
@@ -45,6 +48,7 @@
                     </tbody>
                 </x-table>
             </x-card>
+            <div class="">{{ $categories->links() }}</div>
         </div>
         <div class="col-4">
             <x-card title="TAMBAH KATEGORI" class="card-body">

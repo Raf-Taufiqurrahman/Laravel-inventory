@@ -18,7 +18,7 @@ class LandingController extends Controller
     {
         $products = Product::with('category', 'supplier')->get();
 
-        $categories = Category::get();
+        $categories = Category::limit(12)->get();
 
         return view('landing.welcome', compact('products', 'categories'));
     }

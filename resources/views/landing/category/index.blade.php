@@ -12,6 +12,11 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-12">
+                <form action="{{ route('category.index') }}" method="GET">
+                    <x-search name="search" :value="$search" />
+                </form>
+            </div>
             @foreach ($categories as $category)
                 <div class="col-md-6 col-lg-2">
                     <a class="card card-sm border-0" href="{{ route('category.show', $category->slug) }}">

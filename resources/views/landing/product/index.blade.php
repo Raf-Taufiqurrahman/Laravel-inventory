@@ -6,12 +6,17 @@
             <div class="row align-items-center">
                 <div class="col-auto">
                     <h2 class="page-title font-weight-bold text-uppercase">
-                        Daftar Produk
+                        Daftar Barang
                     </h2>
                 </div>
             </div>
         </div>
         <div class="row">
+            <div class="col-12">
+                <form action="{{ route('product.index') }}" method="GET">
+                    <x-search name="search" :value="$search" />
+                </form>
+            </div>
             @foreach ($products as $product)
                 <div class="col-md-6 col-lg-4">
                     <a href="{{ route('product.show', $product->slug) }}" class="card card-stacked">

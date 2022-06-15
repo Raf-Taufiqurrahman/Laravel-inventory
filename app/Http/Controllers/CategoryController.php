@@ -8,11 +8,15 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Category::get();
+        $search = $request->search;
 
-        return view('landing.category.index', compact('categories'));
+        $categories = Category::when($search, function($query) use($search){
+            $query = $query->where('name', 'like', '%'.$search.'%');
+        })->get();
+
+        return view('landing.category.index', compact('categories', 'search'));
     }
 
     public function show($slug)
