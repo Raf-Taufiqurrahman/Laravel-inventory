@@ -1,6 +1,6 @@
 ## Inventory Management System
-Aplikasi Web ini saya bangun sebagai tugas akhir skripsi kuliah di Universitas Mulia Samarinda, menggunakan framework laravel.
-Latar Belakang pembuatan aplikasi ini adalah pada tempat penelitian saya, untuk melakukan sebuah transaksi permintaan, peminjaman dan juga pengambilan barang harus melakukan pengecekan barang di gudang terlebih dahulu yang dimana gudang terletak pada lantai 2 sedangkan customer mayoritas berada pada lantai 1 dan juga barang yang digudang tidak di data secara mendetail oleh pengelola gudang tersebut, sehingga untuk melakukan transaksi bisa memakan waktu yang cukup lama, oleh karena itu saya mencoba untuk membangung sebuah aplikasi yang diharapkan mampu mempercepat dan mempermudah transaski dan juga pengelolaan barang.
+Aplikasi Web ini saya bangun sebagai tugas akhir skripsi kuliah di Universitas Mulia Samarinda, menggunakan framework laravel. <br>
+Latar belakang pembuatan aplikasi ini adalah pada tempat penelitian saya, untuk melakukan sebuah transaksi permintaan, peminjaman dan juga pengambilan barang harus melakukan pengecekan barang di gudang terlebih dahulu yang dimana gudang terletak pada lantai 2 sedangkan customer mayoritas berada pada lantai 1 dan juga barang yang digudang tidak di data secara mendetail oleh pengelola gudang tersebut, sehingga untuk melakukan transaksi bisa memakan waktu yang cukup lama, oleh karena itu saya mencoba untuk membangung sebuah aplikasi yang diharapkan mampu mempercepat dan mempermudah transaski dan juga pengelolaan barang.
 
 ![Imgur](https://imgur.com/mVyzQ6V.png)
 
