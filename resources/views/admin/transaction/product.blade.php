@@ -31,7 +31,7 @@
                                 Total Barang Keluar
                             </td>
                             <td class="font-weight-bold text-danger text-right">
-                                {{ $grandTransaction }} Barang ({{ $grandQuantity }} Kuantitas)
+                                {{ $transactions->count() }} Barang ({{ $grandQuantity }} Kuantitas)
                             </td>
                         </tr>
                     </tbody>

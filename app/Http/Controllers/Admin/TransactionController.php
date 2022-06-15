@@ -14,11 +14,9 @@ class TransactionController extends Controller
     {
         $transactions = Transaction::with('details.product')->latest()->paginate(10);
 
-        $grandTransaction = Transaction::with('details.product')->count();
-
         $grandQuantity = TransactionDetail::sum('quantity');
 
-        return view('admin.transaction.product', compact('transactions', 'grandQuantity', 'grandTransaction'));
+        return view('admin.transaction.product', compact('transactions', 'grandQuantity'));
     }
 
     public function vehicle()

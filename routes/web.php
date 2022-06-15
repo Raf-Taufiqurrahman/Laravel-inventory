@@ -4,10 +4,12 @@ use App\Http\Controllers\Admin\{
     DashboardController, CategoryController, PermissionController, SupplierController,
     ProductController, RoleController, StockController, VehicleController, TransactionController,
     UserController, OrderController,
-    ReportController
+    ReportController,
+    SettingController
 };
 use App\Http\Controllers\Customer\{
-    DashboardController as CustomerDashboardController, OrderController as CustomerOrderController, TransactionController as CustomerTransactionController, RentController as CustomerRentController
+    DashboardController as CustomerDashboardController, OrderController as CustomerOrderController, TransactionController as CustomerTransactionController, RentController as CustomerRentController,
+    SettingController as CustomerSettingController
 };
 use App\Http\Controllers\{
     LandingController, ProductController as LandingProductController,
@@ -63,6 +65,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'r
     Route::controller(ReportController::class)->group(function(){
         Route::get('/report', 'index')->name('report');
     });
+
+    Route::controller(SettingController::class)->group(function(){
+        Route::get('/setting', 'index')->name('setting.index');
+        Route::put('/setting/update/{user}', 'update')->name('setting.update');
+    });
 });
 
 Route::group(['prefix' => 'customer', 'as' => 'customer.', 'middleware' => ['auth', 'role:Customer']], function (){
@@ -70,4 +77,8 @@ Route::group(['prefix' => 'customer', 'as' => 'customer.', 'middleware' => ['aut
     Route::get('/transaction', CustomerTransactionController::class)->name('transaction');
     Route::resource('/order', CustomerOrderController::class);
     Route::resource('/rent', CustomerRentController::class);
+    Route::controller(CustomerSettingController::class)->group(function(){
+        Route::get('/setting', 'index')->name('setting.index');
+        Route::put('/setting/update/{user}', 'update')->name('setting.update');
+    });
 });
