@@ -1,7 +1,7 @@
 ## Inventory Management System
 Aplikasi Web ini saya bangun sebagai tugas akhir skripsi kuliah di Universitas Mulia Samarinda, menggunakan framework laravel.
 
-![Imgur](https://imgur.com/B8mUH8u.png)
+![Imgur](https://imgur.com/mVyzQ6V.png)
 
 ## Cara Instalasi Project
 
@@ -21,14 +21,14 @@ password : password
 ```
 
 ## Fitur Aplikasi 
-- Terdapat 2 role yaitu : super admin, admin, dan customer
-- Mengelola Kategori (Role: Super Admin & Admin)
-- Mengelola Supplier (Role: Super Admin & Admin)
-- Mengelola Barang (Role: Super Admin & Admin)
-- Mengelola User (Role: Super Admin & Admin)
-- Mengelola Transaksi (Role: Super Admin & Admin)
+- Terdapat 3 role yaitu : super admin, admin, dan customer
+- Mengelola Kategori (Super Admin & Admin)
+- Mengelola Supplier (Super Admin & Admin)
+- Mengelola Barang (Super Admin & Admin)
+- Mengelola User (Super Admin & Admin)
+- Mengelola Transaksi (Super Admin & Admin)
 - Mengelola Roles & Permission (Super Admin)
-- Halaman Dashboard dengan berbagai fitur seperti : (Role: Super Admin & Admin) 
+- Halaman Dashboard dengan berbagai fitur seperti : (Super Admin & Admin) 
    - Barang paling populer
    - Notifikasi permintaan barang yang belum di verifikasi
    - List barang dengan stok kurang dari 10
@@ -40,12 +40,12 @@ password : password
    - Jumlah Permintaan Barang
    - Jumlah Barang Keluar
    - Jumlah Barang Keluar Bulan Ini
-- Permintaan Barang (Role: all Role)
-- Peminjaman Kendaraan (Role: all Role)
-- Pengembalian Kendaraan (Role: all Role)
-- Keranjang (Role: all Role)
-- Mengubah Akun (Role: all Role)
-- List Transaksi (Role: all Role)
+- Permintaan Barang (All Role)
+- Peminjaman Kendaraan (All Role)
+- Pengembalian Kendaraan (All Role)
+- Keranjang (All Role)
+- Mengubah Akun (All Role)
+- List Transaksi (All Role)
 - Search Data
 - Responsive
 
