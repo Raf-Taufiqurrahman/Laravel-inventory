@@ -23,7 +23,7 @@
                             <tr>
                                 <th>Nama Barang</th>
                                 <th>Kategori Barang</th>
-                                <th>Kuantitas Barang</th>
+                                <th>Kuantitas Barang Saat Ini</th>
                             </tr>
                         </thead>
                         <tbody>

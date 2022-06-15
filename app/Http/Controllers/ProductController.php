@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\TransactionDetail;
 
 class ProductController extends Controller
 {
@@ -12,32 +14,17 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::with('category', 'supplier')->get();
+        $search = $request->search;
 
-        return view('landing.product.index', compact('products'));
-    }
+        $products = Product::with('category', 'supplier')->when($search, function($query) use($search){
+            $query = $query->where('name', 'like', '%'.$search.'%');
+        })->orWhereHas('category', function($query) use($search){
+            $query = $query->where('name', 'like', '%'.$search.'%');
+        })->get();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        return view('landing.product.index', compact('products', 'search'));
     }
 
     /**
@@ -50,40 +37,10 @@ class ProductController extends Controller
     {
         $product = Product::with('category')->where('slug', $slug)->first();
 
-        return view('landing.product.show', compact('product'));
-    }
+        $products = $product->where('category_id', $product->category_id)->where('id', '!=',$product->id)->limit(5)->inRandomOrder()->get();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        $transaction = TransactionDetail::with('transaction', 'product')->where('product_id', $product->id)->get();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return view('landing.product.show', compact('product', 'products', 'transaction'));
     }
 }

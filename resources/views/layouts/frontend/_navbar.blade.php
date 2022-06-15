@@ -7,7 +7,7 @@
             <img src="{{ asset('static/logo.svg') }}" alt="Tabler" class="navbar-brand-image">
         </a> --}}
         <a href="/" class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pr-0 pr-md-3 mt-2">
-            <h2 class="font-weight-bold">ATK</h2>
+            <h2 class="font-weight-bold">INVENTORY</h2>
         </a>
         <div class="navbar-nav flex-row order-md-last">
             @guest
@@ -142,7 +142,7 @@
                             </svg>
                         </span>
                         <span class="nav-link-title">
-                            Produk
+                            Barang
                         </span>
                     </a>
                 </li>

@@ -18,10 +18,15 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Category::paginate(10);
-        return view('admin.category.index', compact('categories'));
+        $search = $request->search;
+
+        $categories = Category::when($search, function($query) use($search){
+            $query = $query->where('name', 'like', '%'.$search.'%');
+        })->paginate(10)->withQueryString();
+
+        return view('admin.category.index', compact('categories', 'search'));
     }
 
     /**

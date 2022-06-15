@@ -36,8 +36,10 @@
                     </a>
                 </div>
             @endforeach
+        </div>
+        <div class="row">
             <h2 class="page-title font-weight-bold text-uppercase my-3">
-                Daftar Produk
+                Daftar Barang
             </h2>
             @foreach ($products as $product)
                 <div class="col-md-6 col-lg-4">
@@ -45,7 +47,7 @@
                         <div class="ribbon bg-red">{{ $product->category->name }}</div>
                         <div class="card-body">
                             <h3 class="card-title">{{ $product->name }}</h3>
-                            <p class="text-muted">{{ $product->description }}</p>
+                            <p class="text-muted">{{ Str::limit($product->description, 40) }}</p>
                             <p class="text-muted"><svg xmlns="http://www.w3.org/2000/svg"
                                     class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24"
                                     stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
