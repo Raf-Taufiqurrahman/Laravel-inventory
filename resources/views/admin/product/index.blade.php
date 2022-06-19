@@ -1,18 +1,18 @@
-@extends('layouts.master', ['title' => 'Produk'])
+@extends('layouts.master', ['title' => 'Barang'])
 
 @section('content')
     <x-container>
         <div class="col-12">
-            <x-button-link title="Tambah Produk" icon="plus" class="btn btn-primary mb-3" style="mr-1" :url="route('admin.product.create')" />
-            <x-card title="DAFTAR PRODUK" class="card-body p-0">
+            <x-button-link title="Tambah Barang" icon="plus" class="btn btn-primary mb-3" style="mr-1" :url="route('admin.product.create')" />
+            <x-card title="DAFTAR BARANG" class="card-body p-0">
                 <x-table>
                     <thead>
                         <tr>
                             <th>#</th>
                             <th>Foto</th>
-                            <th>Nama Produk</th>
+                            <th>Nama Barang</th>
                             <th>Nama Supplier</th>
-                            <th>Kategori Produk</th>
+                            <th>Kategori Barang</th>
                             <th>Satuan</th>
                             <th>Aksi</th>
                         </tr>
@@ -30,8 +30,8 @@
                                 <td>{{ $product->category->name }}</td>
                                 <td>{{ $product->unit }}</td>
                                 <td>
-                                    <x-button-link title="" icon="edit" class="btn btn-info btn-sm" :url="route('admin.product.edit', $product->id)"
-                                        style="" />
+                                    <x-button-link title="" icon="edit" class="btn btn-info btn-sm"
+                                        :url="route('admin.product.edit', $product->id)" style="" />
                                     <x-button-delete :id="$product->id" :url="route('admin.product.destroy', $product->id)" title=""
                                         class="btn btn-danger btn-sm" />
                                 </td>
