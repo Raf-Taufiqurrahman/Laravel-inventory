@@ -18,7 +18,8 @@
                                 <td>{{ $i + $permissions->firstItem() }}</td>
                                 <td>{{ $permission->name }}</td>
                                 <td>
-                                    <x-button-modal :id="$permission->id" title="" icon="edit" style="" class="btn btn-info" />
+                                    <x-button-modal :id="$permission->id" title="" icon="edit" style=""
+                                        class="btn btn-info" />
                                     <x-modal :id="$permission->id" title="Ubah Data">
                                         <form action="{{ route('admin.permission.update', $permission->id) }}"
                                             method="POST">
@@ -29,13 +30,15 @@
                                             <x-button-save title="Simpan" icon="save" class="btn btn-primary" />
                                         </form>
                                     </x-modal>
-                                    <x-button-delete :id="$permission->id" :url="route('admin.permission.destroy', $permission->id)" title="" class="btn btn-danger" />
+                                    <x-button-delete :id="$permission->id" :url="route('admin.permission.destroy', $permission->id)" title=""
+                                        class="btn btn-danger" />
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </x-table>
             </x-card>
+            <div class="d-flex justify-content-end">{{ $permissions->links() }}</div>
         </div>
         <div class="col-4">
             <x-card title="TAMBAH PERMISSION" class="card-body">

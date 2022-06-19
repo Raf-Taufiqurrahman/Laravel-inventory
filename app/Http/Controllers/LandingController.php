@@ -16,7 +16,7 @@ class LandingController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $products = Product::with('category', 'supplier')->get();
+        $products = Product::with('category', 'supplier')->latest()->paginate(9);
 
         $categories = Category::limit(12)->get();
 
