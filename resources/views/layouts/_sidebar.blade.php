@@ -149,31 +149,29 @@
                     </li>
                 @endrole
                 @hasanyrole('Admin|Super Admin')
-                    @can('index-dashboad')
-                        <li class="nav-item">
-                            <a class="nav-link {{ Route::is('admin.dashboard') ? 'active' : '' }}"
-                                href="{{ route('admin.dashboard') }}">
-                                <span class="nav-link-icon d-md-none d-lg-inline-block mr-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-apps"
-                                        width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-                                        stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <rect x="4" y="4" width="6" height="6" rx="1">
-                                        </rect>
-                                        <rect x="4" y="14" width="6" height="6" rx="1">
-                                        </rect>
-                                        <rect x="14" y="14" width="6" height="6" rx="1">
-                                        </rect>
-                                        <line x1="14" y1="7" x2="20" y2="7"></line>
-                                        <line x1="17" y1="4" x2="17" y2="10"></line>
-                                    </svg>
-                                </span>
-                                <span class="nav-link-title">
-                                    Dashboard
-                                </span>
-                            </a>
-                        </li>
-                    @endcan
+                    <li class="nav-item">
+                        <a class="nav-link {{ Route::is('admin.dashboard') ? 'active' : '' }}"
+                            href="{{ route('admin.dashboard') }}">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block mr-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-apps"
+                                    width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                    stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <rect x="4" y="4" width="6" height="6" rx="1">
+                                    </rect>
+                                    <rect x="4" y="14" width="6" height="6" rx="1">
+                                    </rect>
+                                    <rect x="14" y="14" width="6" height="6" rx="1">
+                                    </rect>
+                                    <line x1="14" y1="7" x2="20" y2="7"></line>
+                                    <line x1="17" y1="4" x2="17" y2="10"></line>
+                                </svg>
+                            </span>
+                            <span class="nav-link-title">
+                                Dashboard
+                            </span>
+                        </a>
+                    </li>
                     <div class="hr-text hr-text-left ml-2 mb-2 mt-2">Menu</div>
                     @can('index-category')
                         <li class="nav-item">
@@ -215,47 +213,51 @@
                             </a>
                         </li>
                     @endcan
-                    <li class="nav-item">
-                        <a class="nav-link {{ Route::is('admin.product*') ? 'active' : '' }}"
-                            href="{{ route('admin.product.index') }}">
-                            <span class="nav-link-icon d-md-none d-lg-inline-block mr-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-truck-loading"
-                                    width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-                                    stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <path d="M2 3h1a2 2 0 0 1 2 2v10a2 2 0 0 0 2 2h15"></path>
-                                    <rect x="9" y="6" width="10" height="8" rx="3">
-                                    </rect>
-                                    <circle cx="9" cy="19" r="2"></circle>
-                                    <circle cx="18" cy="19" r="2"></circle>
-                                </svg>
-                            </span>
-                            <span class="nav-link-title">
-                                Barang
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ Route::is('admin.vehicle*') ? 'active' : '' }}"
-                            href="{{ route('admin.vehicle.index') }}">
-                            <span class="nav-link-icon d-md-none d-lg-inline-block mr-1">
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                    class="icon icon-tabler icon-tabler-steering-wheel" width="24" height="24"
-                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <circle cx="12" cy="12" r="9"></circle>
-                                    <circle cx="12" cy="12" r="2"></circle>
-                                    <line x1="12" y1="14" x2="12" y2="21"></line>
-                                    <line x1="10" y1="12" x2="3.25" y2="10"></line>
-                                    <line x1="14" y1="12" x2="20.75" y2="10"></line>
-                                </svg>
-                            </span>
-                            <span class="nav-link-title">
-                                Kendaraan
-                            </span>
-                        </a>
-                    </li>
+                    @can('index-product')
+                        <li class="nav-item">
+                            <a class="nav-link {{ Route::is('admin.product*') ? 'active' : '' }}"
+                                href="{{ route('admin.product.index') }}">
+                                <span class="nav-link-icon d-md-none d-lg-inline-block mr-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-truck-loading"
+                                        width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                        stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M2 3h1a2 2 0 0 1 2 2v10a2 2 0 0 0 2 2h15"></path>
+                                        <rect x="9" y="6" width="10" height="8" rx="3">
+                                        </rect>
+                                        <circle cx="9" cy="19" r="2"></circle>
+                                        <circle cx="18" cy="19" r="2"></circle>
+                                    </svg>
+                                </span>
+                                <span class="nav-link-title">
+                                    Barang
+                                </span>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('index-vehicle')
+                        <li class="nav-item">
+                            <a class="nav-link {{ Route::is('admin.vehicle*') ? 'active' : '' }}"
+                                href="{{ route('admin.vehicle.index') }}">
+                                <span class="nav-link-icon d-md-none d-lg-inline-block mr-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-steering-wheel" width="24" height="24"
+                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <circle cx="12" cy="12" r="9"></circle>
+                                        <circle cx="12" cy="12" r="2"></circle>
+                                        <line x1="12" y1="14" x2="12" y2="21"></line>
+                                        <line x1="10" y1="12" x2="3.25" y2="10"></line>
+                                        <line x1="14" y1="12" x2="20.75" y2="10"></line>
+                                    </svg>
+                                </span>
+                                <span class="nav-link-title">
+                                    Kendaraan
+                                </span>
+                            </a>
+                        </li>
+                    @endcan
                     <div class="hr-text hr-text-left ml-2 mb-2 mt-2">Stok Produk</div>
                     <li class="nav-item">
                         <a class="nav-link {{ Route::is('admin.stock*') ? 'active' : '' }}"

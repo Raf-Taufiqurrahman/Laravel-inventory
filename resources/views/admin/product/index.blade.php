@@ -3,7 +3,9 @@
 @section('content')
     <x-container>
         <div class="col-12">
-            <x-button-link title="Tambah Barang" icon="plus" class="btn btn-primary mb-3" style="mr-1" :url="route('admin.product.create')" />
+            @can('create-product')
+                <x-button-link title="Tambah Barang" icon="plus" class="btn btn-primary mb-3" style="mr-1" :url="route('admin.product.create')" />
+            @endcan
             <x-card title="DAFTAR BARANG" class="card-body p-0">
                 <x-table>
                     <thead>
@@ -30,10 +32,14 @@
                                 <td>{{ $product->category->name }}</td>
                                 <td>{{ $product->unit }}</td>
                                 <td>
-                                    <x-button-link title="" icon="edit" class="btn btn-info btn-sm"
-                                        :url="route('admin.product.edit', $product->id)" style="" />
-                                    <x-button-delete :id="$product->id" :url="route('admin.product.destroy', $product->id)" title=""
-                                        class="btn btn-danger btn-sm" />
+                                    @can('update-product')
+                                        <x-button-link title="" icon="edit" class="btn btn-info btn-sm"
+                                            :url="route('admin.product.edit', $product->id)" style="" />
+                                    @endcan
+                                    @can('delete-product')
+                                        <x-button-delete :id="$product->id" :url="route('admin.product.destroy', $product->id)" title=""
+                                            class="btn btn-danger btn-sm" />
+                                    @endcan
                                 </td>
                             </tr>
                         @endforeach
