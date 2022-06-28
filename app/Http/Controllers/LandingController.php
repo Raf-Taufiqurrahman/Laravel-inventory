@@ -18,7 +18,7 @@ class LandingController extends Controller
     {
         $products = Product::with('category', 'supplier')->latest()->paginate(9);
 
-        $categories = Category::limit(12)->get();
+        $categories = Category::with('products')->limit(12)->get();
 
         return view('landing.welcome', compact('products', 'categories'));
     }
