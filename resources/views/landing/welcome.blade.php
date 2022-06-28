@@ -12,14 +12,18 @@
                     <h2 class="page-title font-weight-bold text-uppercase">
                         Daftar Kategori
                     </h2>
-                    <a href="{{ route('category.index') }}" class="text-decoration-underline">Lihat Lebih banyak</a>
+                    @if ($categories->count() == 12)
+                        <a href="{{ route('category.index') }}" class="text-decoration-underline">
+                            Lihat Lebih banyak
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>
         <div class="row">
             @foreach ($categories as $category)
                 <div class="col-md-6 col-lg-2">
-                    <a class="card card-sm border-0" href="{{ route('category.show', $category->slug) }}">
+                    <a class="card card-sm border-0 rounded-lg" href="{{ route('category.show', $category->slug) }}">
                         <div class="card-body">
                             <div class="row align-items-center">
                                 <div class="col-auto">
@@ -64,9 +68,11 @@
                     </a>
                 </div>
             @endforeach
-            <div class="col-12 d-flex justify-content-center my-2">
-                <a href="{{ route('product.index') }}" class="btn btn-dark">Lihat Lebih Banyak</a>
-            </div>
+            @if ($products->count() == 9)
+                <div class="col-12 d-flex justify-content-center my-2">
+                    <a href="{{ route('product.index') }}" class="btn btn-dark">Lihat Lebih Banyak</a>
+                </div>
+            @endif
         </div>
     </div>
 @endsection
