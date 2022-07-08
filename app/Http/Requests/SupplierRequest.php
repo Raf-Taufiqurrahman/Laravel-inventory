@@ -23,20 +23,10 @@ class SupplierRequest extends FormRequest
      */
     public function rules()
     {
-        if(request()->isMethod('POST')){
-            $data = [
-                'name' => 'required',
-                'telp' => 'required|numeric',
-                'address' => 'required'
-            ];
-        }elseif(request()->isMethod('PUT')){
-            $data = [
-                'name' => 'required',
-                'telp' => 'required|numeric|max:12',
-                'required' => 'required'
-            ];
-        }
-
-        return $data;
+        return [
+            'name' => 'required',
+            'telp' => 'required|numeric',
+            'address' => 'required',
+        ];
     }
 }

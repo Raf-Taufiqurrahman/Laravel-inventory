@@ -2,7 +2,7 @@
 
 @section('content')
     <x-container>
-        <div class="col-8">
+        <div class="col-12 col-lg-8">
             <form action="{{ route('admin.category.index') }}" method="GET">
                 <x-search name="search" :value="$search" />
             </form>
@@ -55,7 +55,7 @@
             <div class="">{{ $categories->links() }}</div>
         </div>
         @can('create-category')
-            <div class="col-4">
+            <div class="col-12 col-lg-4">
                 <x-card title="TAMBAH KATEGORI" class="card-body">
                     <form action="{{ route('admin.category.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf

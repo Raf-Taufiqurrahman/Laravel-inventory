@@ -2,7 +2,7 @@
 
 @section('content')
     <x-container>
-        <div class="col-8">
+        <div class="col-12 col-lg-8">
             <x-card title="DAFTAR SUPPLIER" class="card-body p-0">
                 <x-table>
                     <thead>
@@ -51,7 +51,7 @@
             </x-card>
         </div>
         @can('create-supplier')
-            <div class="col-4">
+            <div class="col-12 col-lg-4">
                 <x-card title="TAMBAH SUPPLIER" class="card-body">
                     <form action="{{ route('admin.supplier.store') }}" method="POST">
                         @csrf

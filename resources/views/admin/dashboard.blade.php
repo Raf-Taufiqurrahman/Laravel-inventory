@@ -15,9 +15,9 @@
         </div>
         <div class="col-sm-6 col-xl-3">
             <x-widget title="Supplier" :subTitle="$suppliers" class="bg-primary">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-truck" width="24" height="24"
-                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-                    stroke-linejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-truck" width="24"
+                    height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <circle cx="7" cy="17" r="2"></circle>
                     <circle cx="17" cy="17" r="2"></circle>
@@ -54,9 +54,9 @@
         </div>
         <div class="col-sm-6 col-xl-3">
             <x-widget title="Customer" :subTitle="$customers" class="bg-lime">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="24" height="24"
-                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-                    stroke-linejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="24"
+                    height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <circle cx="9" cy="7" r="4"></circle>
                     <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
@@ -67,9 +67,9 @@
         </div>
         <div class="col-sm-6 col-xl-3">
             <x-widget title="Permintaan Barang" :subTitle="0" class="bg-green">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart-plus" width="24"
-                    height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                    stroke-linecap="round" stroke-linejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart-plus"
+                    width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                    fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <circle cx="6" cy="19" r="2"></circle>
                     <circle cx="17" cy="19" r="2"></circle>
@@ -81,9 +81,9 @@
         </div>
         <div class="col-sm-6 col-xl-3">
             <x-widget title="Barang Keluar" :subTitle="$transactions" class="bg-cyan">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart-x" width="24"
-                    height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                    stroke-linecap="round" stroke-linejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart-x"
+                    width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                    fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <circle cx="6" cy="19" r="2"></circle>
                     <circle cx="17" cy="19" r="2"></circle>
@@ -96,9 +96,9 @@
         </div>
         <div class="col-sm-6 col-xl-3">
             <x-widget title="Barang Keluar Bulan ini" :subTitle="$transactionThisMonth" class="bg-teal">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart-off" width="24"
-                    height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                    stroke-linecap="round" stroke-linejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart-off"
+                    width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                    fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <circle cx="6" cy="19" r="2"></circle>
                     <path d="M17 17a2 2 0 1 0 2 2"></path>
@@ -122,7 +122,7 @@
                 </div>
             @endif
         </div>
-        <div class="col-6">
+        <div class="col-12 col-lg-6">
             <x-card title="List Barang dengan stok kurang dari 10">
                 <div class="list list-row list-hoverable">
                     @foreach ($productsOutStock as $product)
