@@ -81,7 +81,7 @@
                             </span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link {{ Route::is('rent.order*') ? 'active' : '' }}"
                             href="{{ route('customer.rent.index') }}">
                             <span class="nav-link-icon d-md-none d-lg-inline-block mr-1">
@@ -101,7 +101,7 @@
                                 Pengembalian Kendaraan
                             </span>
                         </a>
-                    </li>
+                    </li> --}}
                     <div class="hr-text hr-text-left ml-2 mb-2 mt-2">Transaksi</div>
                     <li class="nav-item">
                         <a class="nav-link {{ Route::is('customer.transaction') ? 'active' : '' }}"
@@ -235,7 +235,7 @@
                             </a>
                         </li>
                     @endcan
-                    @can('index-vehicle')
+                    {{-- @can('index-vehicle')
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('admin.vehicle*') ? 'active' : '' }}"
                                 href="{{ route('admin.vehicle.index') }}">
@@ -257,7 +257,7 @@
                                 </span>
                             </a>
                         </li>
-                    @endcan
+                    @endcan --}}
                     <div class="hr-text hr-text-left ml-2 mb-2 mt-2">Stok Produk</div>
                     <li class="nav-item">
                         <a class="nav-link {{ Route::is('admin.stock*') ? 'active' : '' }}"
@@ -347,7 +347,7 @@
                             </span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link {{ Route::is('admin.transaction.vehicle') ? 'active' : '' }}"
                             href="{{ route('admin.transaction.vehicle') }}">
                             <span class="nav-link-icon d-md-none d-lg-inline-block mr-1">
@@ -367,7 +367,7 @@
                                 Kendaraan Keluar
                             </span>
                         </a>
-                    </li>
+                    </li> --}}
                     <div class="hr-text hr-text-left ml-2 mb-2 mt-2">User Manajemen</div>
                     <li class="nav-item">
                         <a class="nav-link {{ Route::is('admin.permission*') ? 'active' : '' }}"
