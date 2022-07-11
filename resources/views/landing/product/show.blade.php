@@ -3,9 +3,9 @@
 @section('content')
     <div class="w-full py-6 px-4 pb-20 md:pb-0">
         <div class="container mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:mx-8">
-                <div>
-                    <img src="{{ $product->image }}" class="objec-cover w-full rounded-lg">
+            <div class="grid grid-cols-1 md:grid-cols-2 md:mx-8 gap-4">
+                <div class="row-span-2">
+                    <img src="{{ $product->image }}" class="objec-cover w-full object-center rounded-lg">
                 </div>
                 <div class="bg-white border-2 border-red-500 rounded-lg p-4">
                     <p class="text-base text-gray-500">{{ $product->category->name }}</p>
@@ -63,6 +63,5 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 @endsection

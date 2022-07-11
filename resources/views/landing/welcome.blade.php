@@ -24,7 +24,7 @@
                 <h1 class="text-gray-700 font-bold text-lg">Daftar Produk</h1>
                 <p class="text-gray-400 text-xs">beberapa produk yang kami sediakan</p>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 pt-5 pb-20">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 pt-5 pb-20 lg:pb-0">
                 @foreach ($products as $product)
                     <a href="{{ route('product.show', $product->slug) }}"
                         class='bg-white shadow-lg rounded-lg relative border-2 border-red-500 hover:scale-105 duration-500'>

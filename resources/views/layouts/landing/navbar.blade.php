@@ -19,10 +19,10 @@
                     {{ Route::is('product.index') ? 'border-2 border-sky-500 bg-sky-800' : '' }}">
                     Produk
                 </a>
-                <a href="{{ route('vehicle.index') }}"
+                {{-- <a href="{{ route('vehicle.index') }}"
                     class="text-white font-semibold p-2 rounded-lg hover:bg-sky-700 hover:text-white {{ Route::is('vehicle*') ? 'border-2 border-sky-500 bg-sky-800' : '' }}">
                     Kendaraan
-                </a>
+                </a> --}}
             </div>
             <div class="flex items-center gap-2">
                 @guest
@@ -48,11 +48,11 @@
                         </span>
                     </a>
                     @hasanyrole('Admin|Super Admin')
-                        <a href="{{ route('register') }}"
+                        <a href="{{ route('admin.dashboard') }}"
                             class="hidden md:flex bg-sky-600 p-2 rounded-lg font-semibold text-white hover:bg-sky-700 ml-2">Dashboard</a>
                     @endhasallroles
                     @role('Customer')
-                        <a href="{{ route('register') }}"
+                        <a href="{{ route('customer.dashboard') }}"
                             class="hidden md:flex bg-sky-600 p-2 rounded-lg font-semibold text-white hover:bg-sky-700 ">Dashboard</a>
                     @endrole
                 @endauth
