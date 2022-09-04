@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.shadow-custom {
+    box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+[x-cloak] {
+    display: none;
+}
+
+.duration-300 {
+    transition-duration: 300ms;
+}
+
+.ease-in {
+    transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+}
+
+.ease-out {
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+.scale-90 {
+    transform: scale(.9);
+}
+
+.scale-100 {
+    transform: scale(1);
+}
