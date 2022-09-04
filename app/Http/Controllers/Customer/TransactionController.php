@@ -20,9 +20,13 @@ class TransactionController extends Controller
     {
         $user = Auth::id();
 
-        $transactions = TransactionDetail::with('product', 'transaction')->whereHas('transaction', function($query) use($user){
-            $query->where('user_id', $user);
-        })->paginate(10);
+        $transactions = Transaction::with('details.product')->where('user_id', $user)->latest()->paginate(10);
+
+        // $grandQuantity = TransactionDetail::sum('quantity');
+
+        // $transactions = TransactionDetail::with('product', 'transaction')->whereHas('transaction', function($query) use($user){
+        //     $query->where('user_id', $user);
+        // })->paginate(10);
 
         $grandTransaction = Transaction::with('details.product')->where('user_id', $user)->count();
 

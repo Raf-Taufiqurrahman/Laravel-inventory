@@ -13,11 +13,13 @@ class Product extends Model
 
     protected $guarded = [];
 
-    protected function image(): Attribute
+    public function getImageAttribute($value)
     {
-        return Attribute::make(
-            get: fn($image) => asset('storage/products/' . $image),
-        );
+        if ($value != null) :
+            return asset('storage/products/' . $value);
+        else :
+            return'https://fakeimg.pl/308x205/?text=Product&font=lexend';
+        endif;
     }
 
     public function category()

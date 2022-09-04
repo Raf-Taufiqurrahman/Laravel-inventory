@@ -36,7 +36,8 @@ class CartController extends Controller
                 'product_id' => $product->id,
                 'quantity' => '1',
             ]);
-            return redirect(route('cart.index'))->with('toast_success', 'Produk berhasil ditambahkan keranjang');
+            return redirect(route('cart.index'))
+                ->with('toast_success', 'Produk berhasil ditambahkan keranjang');
         }
     }
 

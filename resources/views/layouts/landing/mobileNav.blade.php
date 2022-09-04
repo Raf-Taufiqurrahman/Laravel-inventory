@@ -1,4 +1,4 @@
-<div class='fixed bottom-0 w-full sm:hidden border-t-2 rounded-t border-sky-400 p-3 bg-sky-700'>
+<div class='fixed bottom-0 w-full sm:hidden border-t-4 rounded-t-lg border-sky-500 p-3 bg-sky-800'>
     <div class='container mx-auto px-4 text-white'>
         @guest
             <div class='grid grid-cols-3 gap-6 justify-items-center'>
@@ -41,19 +41,6 @@
                         <circle cx="18" cy="19" r="2"></circle>
                     </svg>
                 </a>
-                {{-- <a href="{{ route('vehicle.index') }}"
-                    class="font-semibold p-2 rounded-lg hover:bg-sky-700 hover:text-white {{ Route::is('vehicle*') ? 'border-2 border-sky-500 bg-sky-800' : '' }}">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-steering-wheel"
-                        width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                        fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                        <circle cx="12" cy="12" r="9"></circle>
-                        <circle cx="12" cy="12" r="2"></circle>
-                        <line x1="12" y1="14" x2="12" y2="21"></line>
-                        <line x1="10" y1="12" x2="3.25" y2="10"></line>
-                        <line x1="14" y1="12" x2="20.75" y2="10"></line>
-                    </svg>
-                </a> --}}
             </div>
         @endguest
         @auth
@@ -70,7 +57,7 @@
                         <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path>
                     </svg>
                 </a>
-                <a href="{{ route('category.index') }}"
+                {{-- <a href="{{ route('category.index') }}"
                     class="font-semibold p-2 rounded-lg hover:bg-sky-700 hover:text-white
                         {{ Route::is('category.index') ? 'border-2 border-sky-500 bg-sky-800' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-color-swatch" width="24"
@@ -82,6 +69,21 @@
                         <path d="M7.3 13h-2.3a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h12"></path>
                         <line x1="17" y1="17" x2="17" y2="17.01"></line>
                     </svg>
+                </a> --}}
+                <a href="{{ route('cart.index') }}"
+                    class="font-semibold p-2 rounded-lg hover:bg-sky-700 hover:text-white relative
+                        {{ Route::is('cart.index') ? 'border-2 border-sky-500 bg-sky-800' : '' }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-basket" width="24"
+                        height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <polyline points="7 10 12 4 17 10"></polyline>
+                        <path d="M21 10l-2 8a2 2.5 0 0 1 -2 2h-10a2 2.5 0 0 1 -2 -2l-2 -8z"></path>
+                        <circle cx="12" cy="15" r="2"></circle>
+                    </svg>
+                    <div class="text-sm absolute -right-2 -top-1 bg-rose-500 rounded-full px-2 group-hover:bg-rose-700">
+                        {{ Auth::user()->carts()->count() }}
+                    </div>
                 </a>
                 <a href="{{ route('product.index') }}"
                     class="font-semibold p-2 rounded-lg hover:bg-sky-700 hover:text-white

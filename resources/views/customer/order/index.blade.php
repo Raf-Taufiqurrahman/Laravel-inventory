@@ -2,7 +2,7 @@
 
 @section('content')
     <x-container>
-        <div class="col-8">
+        <div class="col-12 col-lg-8">
             <x-card title="DAFTAR PERMINTAAN BARANG" class="card-body p-0">
                 <x-table>
                     <thead>
@@ -67,12 +67,13 @@
                 </x-table>
             </x-card>
         </div>
-        <div class="col-4">
+        <div class="col-lg-4 col-12">
             <x-card title="TAMBAH PERMINTAAN BARANG" class="card-body">
                 <form action="{{ route('customer.order.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <x-input name="image" type="file" title="Foto Barang" placeholder="" :value="old('image')" />
-                    <x-input name="name" type="text" title="Nama Barang" placeholder="Nama Barang" :value="old('name')" />
+                    <x-input name="name" type="text" title="Nama Barang" placeholder="Nama Barang"
+                        :value="old('name')" />
                     <x-input name="quantity" type="number" title="Kuantitas" placeholder="Kuantitas" :value="old('quantity')" />
                     <x-input name="unit" type="text" title="Satuan" placeholder="Satuan" :value="old('unit')" />
                     <x-button-save title="Simpan" icon="save" class="btn btn-primary" />

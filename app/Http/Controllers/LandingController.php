@@ -16,10 +16,15 @@ class LandingController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $products = Product::with('category', 'supplier')->latest()->paginate(9);
+        $search = $request->search;
+
+        $products = Product::with('category', 'supplier'
+        )->when($search, function($query) use($search){
+            $query = $query->where('name', 'like', '%'.$search.'%');
+        })->latest()->paginate(6);
 
         $categories = Category::with('products')->limit(12)->get();
 
-        return view('landing.welcome', compact('products', 'categories'));
+        return view('landing.welcome', compact('products', 'categories', 'search'));
     }
 }

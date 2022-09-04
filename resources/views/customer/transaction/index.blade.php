@@ -12,26 +12,36 @@
                             <th>Nama Produk</th>
                             <th>Kategori Produk</th>
                             <th>Kuantitas</th>
-                            <th>Satuan</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($transactions as $i => $transaction)
                             <tr>
                                 <td>{{ $i + $transactions->firstItem() }}</td>
-                                <td>{{ $transaction->transaction->invoice }}</td>
-                                <td>{{ $transaction->product->name }}</td>
-                                <td>{{ $transaction->product->category->name }}</td>
-                                <td>{{ $transaction->quantity }}</td>
-                                <td>{{ $transaction->product->unit }}</td>
+                                <td>{{ $transaction->user->name }}</td>
+                                <td>
+                                    @foreach ($transaction->details as $details)
+                                        <li>{{ $details->product->name }}</li>
+                                    @endforeach
+                                </td>
+                                <td>
+                                    @foreach ($transaction->details as $details)
+                                        <li>{{ $details->product->category->name }}</li>
+                                    @endforeach
+                                </td>
+                                <td>
+                                    @foreach ($transaction->details as $details)
+                                        <li>{{ $details->quantity }} - {{ $details->product->unit }}</li>
+                                    @endforeach
+                                </td>
                             </tr>
                         @endforeach
                         <tr>
-                            <td colspan="5" class="font-weight-bold text-uppercase">
+                            <td colspan="4" class="font-weight-bold text-uppercase">
                                 Total Transaksi
                             </td>
                             <td class="font-weight-bold text-danger text-right">
-                                {{ $grandTransaction }} Barang ({{ $grandQuantity }} Kuantitas)
+                                {{ $transactions->count() }}x Transaksi
                             </td>
                         </tr>
                     </tbody>
